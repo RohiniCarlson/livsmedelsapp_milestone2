@@ -11,6 +11,4 @@
 
 @interface FavoritesTableViewController : UITableViewController
 
-//@property (nonatomic) NSArray *searchResult;
-
 @end

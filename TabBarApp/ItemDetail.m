@@ -7,6 +7,8 @@
 //
 
 #import "ItemDetail.h"
+#import "AppDelegate.h"
+#import "FoodItem.h"
 
 @interface ItemDetail ()
 
@@ -20,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *water;
 @property (nonatomic) NSDictionary *searchResult;
 @property (nonatomic) NSDictionary *nutrientValues;
+@property (nonatomic) NSMutableDictionary *favoriteList;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addToFavoritesButton;
 
 @end
 
@@ -27,33 +31,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.foodItemNameLabel.text = self.item[@"name"];
-  /*  NSMutableSet *executedQueries;
-    [executedQueries addObject: @{@"name" :@"Dressing fett 0%%",
-        @"number" : @44,
-        @"nutrientValues" : @{
-                          @"energyKj" : @250.0f,
-                          @"energyKcal": @60.0f,
-                          @"protein" : @1.6f,
-                          @"fat": @0.0f}}];
-    [executedQueries addObject: @{@"name" :@"Dressing fett 0%%",
-        @"number" : @44,
-        @"nutrientValues" : @{
-                        @"energyKj" : @250.0f,
-                        @"energyKcal": @60.0f,
-                        @"protein" : @1.6f,
-                        @"fat": @0.0f}}];
-    [executedQueries addObject: @{@"name" :@"Morotssoppa",
-        @"number" : @307,
-        @"nutrientValues" : @{
-                        @"energyKj" : @181.0f,
-                        @"energyKcal": @43.0f,
-                        @"protein" : @0.9f,
-                        @"fat": @2.4f}}];*/
-  //  NSLog(@"sortedSet: %@",executedQueries);
-  //  NSLog(@"num items sortedSet: %lu",(unsigned long)executedQueries.count);
     
-    //self.foodItemNumberLabel.text = [NSString stringWithFormat:@"%@", self.item[@"number"]];
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    NSString *searchKey = [NSString stringWithFormat:@"%@", self.item[@"number"]];
+    self.favoriteList = delegate.favoriteList;
+    if ([self.favoriteList valueForKey:searchKey] == nil) {
+        self.addToFavoritesButton.enabled = YES;
+        self.addToFavoritesButton.title = @"Add To Favorites";
+    } else {
+        self.addToFavoritesButton.enabled = NO;
+        self.addToFavoritesButton.title = @"";
+    }
+    
+    // Need to check for saved queries as well.
     
     NSString *searchString = [NSString stringWithFormat:@"http://matapi.se/foodstuff/%@", self.item[@"number"]];
     NSLog(@"%@",searchString);
@@ -140,6 +130,28 @@
         }
     }];
     [task resume];
+}
+
+
+- (IBAction)onAddToFavorites:(UIBarButtonItem *)sender {
+    NSString *number = [NSString stringWithFormat:@"%@",self.item[@"number"]];
+    NSString *name = self.foodItemNameLabel.text;
+    float energy = [self.energy.text floatValue];
+    float protein = [self.protein.text floatValue];
+    float fat = [self.fat.text floatValue];
+    float carbs = [self.carbs.text floatValue];
+    float fibre = [self.fibre.text floatValue];
+    float salt = [self.salt.text floatValue];
+    float water = [self.water.text floatValue];
+    FoodItem *foodItem;
+    foodItem = [[FoodItem alloc] initWithNumber:number name:name energy:energy protein:protein fat:fat carbs:carbs fibre:fibre salt:salt water:water];
+    NSLog(@"Item created: %@",foodItem);
+    self.favoriteList[number] = foodItem;
+    if ([self.favoriteList valueForKey:number] != nil) {
+        NSLog(@"item added to favorites: %@",self.favoriteList[number]);
+        NSLog(@"Num items in favorite list: %lu", (unsigned long)self.favoriteList.count);
+    }
+    self.addToFavoritesButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {

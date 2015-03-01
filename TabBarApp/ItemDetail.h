@@ -12,6 +12,5 @@
 
 @property (nonatomic) NSDictionary *item;
 @property (nonatomic) NSArray *mainSearchResult;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addToFavoritesButton;
 
 @end

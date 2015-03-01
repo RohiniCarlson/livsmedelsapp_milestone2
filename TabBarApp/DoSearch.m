@@ -50,10 +50,9 @@
     searchString = [searchString stringByTrimmingCharactersInSet:
                                [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSURL *url = [NSURL URLWithString:searchString];
-    NSLog(@"url: %@",url);
-    //searchString = [searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        //searchString = [searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
    //NSURL *url = [NSURL URLWithString:[searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-   // NSLog(@"%@",url);
+    NSLog(@"url: %@",url);
 
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSession *session = [NSURLSession sharedSession];

@@ -54,7 +54,7 @@
 }
 
 -(NSString*)description {
-    return [NSString stringWithFormat:@"%@            fetthalt: %f", self.name, self.fat];
+    return [NSString stringWithFormat:@"%@ - %@", self.number, self.name];
 }
 
 @end

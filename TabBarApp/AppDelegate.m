@@ -16,8 +16,34 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self loadFromUserDefaults];
     return YES;
+}
+
+-(void) loadFromUserDefaults {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [defaults objectForKey:@"favorites"];
+    if (data != nil)
+    {
+        NSDictionary *oldSavedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        if (oldSavedDictionary != nil) {
+            self.favoriteList = [[NSMutableDictionary alloc] initWithDictionary:oldSavedDictionary];
+            NSLog(@"Favorite list initialised from NSUserDefaults");
+        } else {
+            self.favoriteList = [[NSMutableDictionary alloc] init];
+        }
+    } else {
+        self.favoriteList = [[NSMutableDictionary alloc] init];
+        NSLog(@"Favorite list initialised empty");
+    }
+}
+
+-(void) saveToUserDefaults {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.favoriteList];
+    [defaults setObject:data forKey:@"favorites"];
+    NSLog(@"Favorites saved to NSUserDefaults");
+    [defaults synchronize];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -28,6 +54,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self saveToUserDefaults];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

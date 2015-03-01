@@ -7,15 +7,39 @@
 //
 
 #import "FavoritesTableViewController.h"
+#import "AppDelegate.h"
+#import "FoodItem.h"
+#import "FavoritesInfo.h"
 
 @interface FavoritesTableViewController ()
+
+@property (nonatomic) NSArray *favoriteListArray;
 
 @end
 
 @implementation FavoritesTableViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    NSMutableDictionary *favoriteList = delegate.favoriteList;
+    self.favoriteListArray = [favoriteList allValues];
+    NSLog(@"num items in array: %lu",(unsigned long)self.favoriteListArray.count);
+    for (FoodItem *item in self.favoriteListArray) {
+        NSLog(@"%@", item );
+    }
+    if (self.favoriteListArray.count == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No favorites"
+                                                        message:@"Your favorite list is empty at the moment."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView reloadData];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -32,26 +56,30 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return self.favoriteListArray.count;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:
+    (NSIndexPath *)indexPath {
     
-    // Configure the cell...
+    NSString *cellIdentifier = @"FavoriteCell";
     
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    // To be implemented!
+   // UIImage *image = (UIImage*)[cell.contentView viewWithTag:2];
+    UILabel *itemNameLabel = (UILabel*)[cell.contentView viewWithTag:3];
+    UILabel *itemEnergyLabel = (UILabel*)[cell.contentView viewWithTag:4];
+    FoodItem *foodItem = (FoodItem*)self.favoriteListArray[indexPath.row];
+    itemNameLabel.text = foodItem.name;
+    itemEnergyLabel.text = [NSString stringWithFormat:@"%.2f",foodItem.energy];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -87,14 +115,18 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if ([segue.identifier isEqualToString:@"Info"]){
+        FavoritesInfo *infoView =
+        [segue destinationViewController];
+        infoView.foodItem = (FoodItem*)self.favoriteListArray[indexPath.row];
+    } else {
+        NSLog(@"You forgot the segue %@",segue);
+    }
 }
-*/
 
 @end

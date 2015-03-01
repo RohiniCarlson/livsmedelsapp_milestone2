@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		44A1AC531AA240BC001B5F86 /* FoodItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A1AC521AA240BC001B5F86 /* FoodItem.m */; };
+		44A1AC591AA35396001B5F86 /* FavoritesInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A1AC581AA35396001B5F86 /* FavoritesInfo.m */; };
 		44D8DA901AA06EFF0020C86C /* ItemDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D8DA8F1AA06EFF0020C86C /* ItemDetail.m */; };
 		44F39EB61A9DD09B0035CA5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F39EB51A9DD09B0035CA5B /* main.m */; };
 		44F39EB91A9DD09B0035CA5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F39EB81A9DD09B0035CA5B /* AppDelegate.m */; };
@@ -33,6 +34,8 @@
 /* Begin PBXFileReference section */
 		44A1AC511AA240BC001B5F86 /* FoodItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItem.h; sourceTree = "<group>"; };
 		44A1AC521AA240BC001B5F86 /* FoodItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItem.m; sourceTree = "<group>"; };
+		44A1AC571AA35396001B5F86 /* FavoritesInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesInfo.h; sourceTree = "<group>"; };
+		44A1AC581AA35396001B5F86 /* FavoritesInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesInfo.m; sourceTree = "<group>"; };
 		44D8DA8E1AA06EFF0020C86C /* ItemDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetail.h; sourceTree = "<group>"; };
 		44D8DA8F1AA06EFF0020C86C /* ItemDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetail.m; sourceTree = "<group>"; };
 		44F39EB01A9DD09B0035CA5B /* TabBarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabBarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +112,8 @@
 				44D8DA8F1AA06EFF0020C86C /* ItemDetail.m */,
 				44A1AC511AA240BC001B5F86 /* FoodItem.h */,
 				44A1AC521AA240BC001B5F86 /* FoodItem.m */,
+				44A1AC571AA35396001B5F86 /* FavoritesInfo.h */,
+				44A1AC581AA35396001B5F86 /* FavoritesInfo.m */,
 			);
 			path = TabBarApp;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44F39EDB1A9DDED60035CA5B /* SearchResultTableViewController.m in Sources */,
+				44A1AC591AA35396001B5F86 /* FavoritesInfo.m in Sources */,
 				44A1AC531AA240BC001B5F86 /* FoodItem.m in Sources */,
 				44F39EBC1A9DD09B0035CA5B /* DoSearch.m in Sources */,
 				44F39EB91A9DD09B0035CA5B /* AppDelegate.m in Sources */,

@@ -148,8 +148,6 @@
      if ([segue.identifier isEqualToString:@"ShowFoodItemDetail"] ) {
          indexPath = [self.tableView indexPathForSelectedRow];
      detailView.item = self.searchResult[indexPath.row];
-         //detailView.addToFavoritesButton.enabled = NO;
-        // detailView.addToFavoritesButton.title = @"";
      } else if ([segue.identifier isEqualToString:@"ShowFilteredItemDetail"]) {
           indexPath = [self.tableView indexPathForSelectedRow];
          NSLog(@"prepareForSegue(): %d",(int)indexPath.row);

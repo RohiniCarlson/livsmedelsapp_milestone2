@@ -14,7 +14,7 @@
 
 @property(nonatomic) NSMutableArray *detailQueries;
 
-@property(nonatomic) NSMutableArray *favoriteList;
+@property(nonatomic) NSMutableDictionary *favoriteList;
 
 
 @end
