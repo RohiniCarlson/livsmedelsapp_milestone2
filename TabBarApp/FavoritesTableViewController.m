@@ -76,7 +76,7 @@
     UILabel *itemEnergyLabel = (UILabel*)[cell.contentView viewWithTag:4];
     FoodItem *foodItem = (FoodItem*)self.favoriteListArray[indexPath.row];
     itemNameLabel.text = foodItem.name;
-    itemEnergyLabel.text = [NSString stringWithFormat:@"%.2f",foodItem.energy];
+    itemEnergyLabel.text = [NSString stringWithFormat:@"Innehåller %.2f kcal",foodItem.energy];
     return cell;
 }
 

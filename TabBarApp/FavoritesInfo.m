@@ -11,15 +11,27 @@
 @interface FavoritesInfo ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *energyLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *proteinLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fatLabel;
+@property (weak, nonatomic) IBOutlet UILabel *carbsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fibreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *saltLabel;
+@property (weak, nonatomic) IBOutlet UILabel *waterLabel;
 @end
 
 @implementation FavoritesInfo
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:YES];
     self.nameLabel.text = self.foodItem.name;
     self.energyLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.energy];
+    self.proteinLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.protein];
+    self.fatLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.fat];
+    self.carbsLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.carbs];
+    self.fibreLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.fibre];
+    self.saltLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.salt];
+    self.waterLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.water];
 }
 
 - (void)didReceiveMemoryWarning {

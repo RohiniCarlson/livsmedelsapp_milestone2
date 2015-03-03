@@ -79,7 +79,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="630" y="-457"/>
+            <point key="canvasLocation" x="1442" y="-457"/>
         </scene>
         <!--Item Detail-->
         <scene sceneID="wiZ-LC-Hl6">
@@ -310,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ely-jw-F6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624" y="-457"/>
+            <point key="canvasLocation" x="2436" y="-457"/>
         </scene>
         <!--Sök Livsmedel-->
         <scene sceneID="ufC-wZ-h7g">
@@ -380,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1561" y="-1074"/>
+            <point key="canvasLocation" x="1588" y="-1084"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="zxV-Mb-iRD">
@@ -423,12 +423,31 @@
                             <outlet property="delegate" destination="v2v-fm-hwh" id="77t-gJ-rKu"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Camera" image="camera" id="oZK-Ha-WxF"/>
                     <navigationItem key="navigationItem" title="Favorites" id="GBB-Sp-Lvo"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bI0-Fo-Ez3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="151" y="767"/>
+        </scene>
+        <!--Camera-->
+        <scene sceneID="UQU-vQ-css">
+            <objects>
+                <viewController id="TBe-un-fC5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rLm-ae-A29"/>
+                        <viewControllerLayoutGuide type="bottom" id="MMa-9F-aQm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ogZ-Wk-2nw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Camera" id="bGa-ZZ-93p"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z4P-8z-FJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="982" y="-428"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xZL-vl-R9Y">
@@ -445,6 +464,7 @@
                         <segue destination="yef-Fv-GWG" kind="relationship" relationship="viewControllers" id="24g-18-XNa"/>
                         <segue destination="6au-vf-s1m" kind="relationship" relationship="viewControllers" id="Gck-r5-f2n"/>
                         <segue destination="hIN-qn-VI4" kind="relationship" relationship="viewControllers" id="OFO-qw-Ttt"/>
+                        <segue destination="yj9-zB-Rbx" kind="relationship" relationship="viewControllers" id="GUI-TU-NIt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JmV-NU-vvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -673,8 +693,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Info" id="Cs2-IY-Pdw"/>
                     <connections>
+                        <outlet property="carbsLabel" destination="Ij8-uR-TeQ" id="Mjx-NV-fEe"/>
                         <outlet property="energyLabel" destination="yMs-sC-Lrq" id="Xt6-5C-upO"/>
+                        <outlet property="fatLabel" destination="rgk-t3-Iir" id="XYa-Zh-aH3"/>
+                        <outlet property="fibreLabel" destination="L0f-gp-gjk" id="roB-qN-ycz"/>
                         <outlet property="nameLabel" destination="R1b-Kx-Syb" id="TV9-RX-EJ8"/>
+                        <outlet property="proteinLabel" destination="FyU-SB-J4N" id="kqa-ig-JoV"/>
+                        <outlet property="saltLabel" destination="Fi1-9h-4rN" id="lrS-ch-gpO"/>
+                        <outlet property="waterLabel" destination="abv-Gz-igr" id="RtJ-62-fKq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hqf-lE-T2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -756,6 +782,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7t-i4-VYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="630" y="139"/>
+        </scene>
+        <!--Camera-->
+        <scene sceneID="TII-1G-uaI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yj9-zB-Rbx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Camera" image="camera" id="SRx-PZ-wUn"/>
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XHT-jh-J20">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TBe-un-fC5" kind="relationship" relationship="rootViewController" id="3Wb-TP-WIV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E5F-dd-GSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="531" y="-428"/>
         </scene>
     </scenes>
     <resources>
