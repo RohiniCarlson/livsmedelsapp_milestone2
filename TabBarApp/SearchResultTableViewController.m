@@ -22,6 +22,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
+    [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:NO];
 }
 
 - (void)viewDidLoad {

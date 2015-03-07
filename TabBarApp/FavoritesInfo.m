@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:YES];
+   [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:YES];
     self.nameLabel.text = self.foodItem.name;
     self.energyLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.energy];
     self.proteinLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.protein];

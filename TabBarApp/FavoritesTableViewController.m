@@ -20,6 +20,7 @@
 @implementation FavoritesTableViewController
 
 - (void)viewWillAppear:(BOOL)animated {
+    [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:NO];
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSMutableDictionary *favoriteList = delegate.favoriteList;
     self.favoriteListArray = [favoriteList allValues];
@@ -124,6 +125,7 @@
         FavoritesInfo *infoView =
         [segue destinationViewController];
         infoView.foodItem = (FoodItem*)self.favoriteListArray[indexPath.row];
+        [[[[infoView.tabBarController tabBar]items]objectAtIndex:3]setEnabled:YES];
     } else {
         NSLog(@"You forgot the segue %@",segue);
     }

@@ -19,9 +19,14 @@
 
 @implementation DoSearch
 
+- (void)viewWillAppear:(BOOL)animated {
+    [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:NO];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:NO];
+
 }
 
 - (void)didReceiveMemoryWarning {
