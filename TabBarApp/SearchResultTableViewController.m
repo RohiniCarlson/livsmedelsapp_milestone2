@@ -22,7 +22,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
-    [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:NO];
 }
 
 - (void)viewDidLoad {
@@ -138,25 +137,27 @@
     NSIndexPath *indexPath;
     ItemDetail *detailView = [segue destinationViewController];
     
-    /*if ([segue.identifier isEqualToString:@"ShowFoodItemDetail"] ) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        detailView.item = self.searchResult[indexPath.row];
-    } else {
-        NSLog(@"You forgot the segue %@",segue);
-    }*/
+    //self.searchDisplayController.searchResultsTableView
     
+    // Create an ns dictionary with number and name to send over to detail view
  
      if ([segue.identifier isEqualToString:@"ShowFoodItemDetail"] ) {
          indexPath = [self.tableView indexPathForSelectedRow];
      detailView.item = self.searchResult[indexPath.row];
      } else if ([segue.identifier isEqualToString:@"ShowFilteredItemDetail"]) {
-          indexPath = [self.tableView indexPathForSelectedRow];
-         NSLog(@"prepareForSegue(): %d",(int)indexPath.row);
+         indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
      detailView.item = self.filteredResult[indexPath.row];
          
      } else {
      NSLog(@"You forgot the segue %@",segue);
      }
+    
+    /*if ([segue.identifier isEqualToString:@"ShowFoodItemDetail"] ) {
+     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+     detailView.item = self.searchResult[indexPath.row];
+     } else {
+     NSLog(@"You forgot the segue %@",segue);
+     }*/
 }
 
 @end

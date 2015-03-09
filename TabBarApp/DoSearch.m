@@ -19,14 +19,8 @@
 
 @implementation DoSearch
 
-- (void)viewWillAppear:(BOOL)animated {
-    [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:NO];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:NO];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,9 +48,9 @@
     // Required to remove whitespace from entered search citeria
     searchString = [searchString stringByTrimmingCharactersInSet:
                                [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSURL *url = [NSURL URLWithString:searchString];
-        //searchString = [searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-   //NSURL *url = [NSURL URLWithString:[searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = [NSURL URLWithString:[searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    //NSURL *url = [NSURL URLWithString:searchString];
+        //searchString = [searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];   
     NSLog(@"url: %@",url);
 
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -89,6 +83,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     if ([segue.identifier isEqualToString:@"ShowSearchResult"]){
         SearchResultTableViewController*resultView = [segue destinationViewController];
         resultView.searchResult = self.searchResult;

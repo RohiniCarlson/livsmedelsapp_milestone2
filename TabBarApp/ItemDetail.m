@@ -29,10 +29,6 @@
 
 @implementation ItemDetail
 
-- (void)viewWillAppear:(BOOL)animated {
-    [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:NO];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -76,37 +72,38 @@
                         //NSLog(@"%@",self.nutrientValues[@"energyKcal"]);
                         NSLog(@"float value: %.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"energyKcal"]]floatValue]);
                         if (self.nutrientValues[@"energyKcal"] != nil) {
-                            self.energy.text = [NSString stringWithFormat:@"%@",self.nutrientValues[@"energyKcal"]];
+                            self.energy.text =
+                            [NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"energyKcal"]]floatValue]];
                         } else {
                            self.energy.text = @"Not found";
                         }
                         if (self.nutrientValues[@"protein"] != nil) {
-                            self.protein.text = [NSString stringWithFormat:@"%@",self.nutrientValues[@"protein"]];
+                            self.protein.text = [NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"protein"]]floatValue]];
                         } else {
                             self.protein.text = @"Not found";
                         }
                         if (self.nutrientValues[@"fat"] != nil) {
-                            self.fat.text = [NSString stringWithFormat:@"%@",self.nutrientValues[@"fat"]];
+                            self.fat.text = [NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"fat"]]floatValue]];
                         } else {
                             self.fat.text = @"Not found";
                         }
                         if (self.nutrientValues[@"carbohydrates"] != nil) {
-                            self.carbs.text = [NSString stringWithFormat:@"%@",self.nutrientValues[@"carbohydrates"]];
+                            self.carbs.text = [NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"carbohydrates"]]floatValue]];
                         } else {
                             self.carbs.text = @"Not found";
                         }
                         if (self.nutrientValues[@"fibres"] != nil) {
-                            self.fibre.text = [NSString stringWithFormat:@"%@",self.nutrientValues[@"fibres"]];
+                            self.fibre.text = [NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"fibres"]]floatValue]];
                         } else {
                             self.fibre.text = @"Not found";
                         }
                         if (self.nutrientValues[@"salt"] != nil) {
-                            self.salt.text = [NSString stringWithFormat:@"%@",self.nutrientValues[@"salt"]];
+                            self.salt.text = [NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"salt"]]floatValue]];
                         } else {
                             self.salt.text = @"Not found";
                         }
                         if (self.nutrientValues[@"water"] != nil) {
-                            self.water.text = [NSString stringWithFormat:@"%@",self.nutrientValues[@"water"]];
+                            self.water.text = [NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"water"]]floatValue]];
                         } else {
                             self.water.text = @"Not found";
                         }

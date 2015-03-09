@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FoodItem.h"
 
-@interface FavoritesInfo : UIViewController
+@interface FavoritesInfo : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic) FoodItem *foodItem;
 

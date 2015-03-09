@@ -20,7 +20,6 @@
 @implementation FavoritesTableViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:NO];
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSMutableDictionary *favoriteList = delegate.favoriteList;
     self.favoriteListArray = [favoriteList allValues];

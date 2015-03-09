@@ -17,13 +17,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *fibreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *saltLabel;
 @property (weak, nonatomic) IBOutlet UILabel *waterLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *foodPhoto;
+
 @end
 
 @implementation FavoritesInfo
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   [[[[self.tabBarController tabBar]items]objectAtIndex:3]setEnabled:YES];
     self.nameLabel.text = self.foodItem.name;
     self.energyLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.energy];
     self.proteinLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.protein];
@@ -32,6 +33,28 @@
     self.fibreLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.fibre];
     self.saltLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.salt];
     self.waterLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.water];
+}
+
+
+- (IBAction)takePhoto:(UIBarButtonItem *)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    }
+    else
+    {
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }
+    [imagePicker setDelegate:self];
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [self.foodPhoto setImage:image];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
