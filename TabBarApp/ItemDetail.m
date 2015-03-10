@@ -25,6 +25,11 @@
 @property (nonatomic) NSMutableDictionary *favoriteList;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addToFavoritesButton;
 
+@property UIDynamicAnimator *animator;
+@property UIGravityBehavior *gravity;
+@property UICollisionBehavior* collisionBehavior;
+@property UIDynamicItemBehavior *elasticityBehavior;
+
 @end
 
 @implementation ItemDetail
@@ -131,6 +136,26 @@
         }
     }];
     [task resume];
+    
+    UIView *labelFrame = [[UIView alloc] initWithFrame:
+                          CGRectMake(16, 20, 200, 100)];
+    [self.view addSubview:labelFrame];
+    
+    UILabel *labelText = [[UILabel alloc] initWithFrame:
+                          CGRectMake(16, 20, 200, 25)];
+    labelText.text = @"Näringsinnehåll";
+    labelText.font = [UIFont fontWithName:@"Verdana-Bold" size:18];
+    labelText.textColor = [UIColor blueColor];
+    [labelFrame addSubview:labelText];
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:labelFrame];
+    self.gravity = [[UIGravityBehavior alloc] initWithItems:@[labelText]];
+    [self.animator addBehavior:self.gravity];
+    self.collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[labelText]];
+    self.collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+    [self.animator addBehavior:self.collisionBehavior];
+    self.elasticityBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[labelText]];
+    self.elasticityBehavior.elasticity = 0.7f;
+    [self.animator addBehavior:self.elasticityBehavior];
 }
 
 
