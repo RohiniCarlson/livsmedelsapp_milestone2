@@ -25,7 +25,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 // Hides the keyboard when the user taps the return key on the soft keyboard.
@@ -50,7 +49,6 @@
                                [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSURL *url = [NSURL URLWithString:[searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     //NSURL *url = [NSURL URLWithString:searchString];
-        //searchString = [searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];   
     NSLog(@"url: %@",url);
 
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

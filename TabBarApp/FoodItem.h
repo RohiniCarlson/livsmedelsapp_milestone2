@@ -19,6 +19,7 @@
 @property (nonatomic) float fibre;
 @property (nonatomic) float salt;
 @property (nonatomic) float water;
+@property (nonatomic) NSString *imagePath;
 
 -(instancetype)initWithNumber:(NSString*)number name:(NSString*)name energy:(float)energy protein:(float)protein fat:(float)fat carbs:(float)carbs fibre:(float)fibre salt:(float)salt water:(float)water;
 

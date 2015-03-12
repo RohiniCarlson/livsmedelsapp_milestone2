@@ -22,7 +22,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" id="xOj-ld-F5T">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" id="xOj-ld-F5T" customClass="SearchResultTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xOj-ld-F5T" id="Cgm-4n-tes">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -39,7 +39,7 @@
                                     <segue destination="Xab-nF-V5g" kind="show" identifier="ShowFoodItemDetail" id="fI0-1v-cwD"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilteredCell" id="iaI-zo-Ssu">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilteredCell" id="iaI-zo-Ssu" customClass="SearchResultTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iaI-zo-Ssu" id="Jt4-y2-Y1H">
@@ -54,6 +54,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="itemName" destination="IBh-oD-0h8" id="k3f-G3-tXZ"/>
                                     <segue destination="Xab-nF-V5g" kind="show" identifier="ShowFilteredItemDetail" id="vEV-cv-bwb"/>
                                 </connections>
                             </tableViewCell>
@@ -396,7 +397,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IRq-HL-fGd" id="Xoa-9j-jm9">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMa-wE-jo6">
+                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="apple" translatesAutoresizingMaskIntoConstraints="NO" id="wMa-wE-jo6">
                                             <rect key="frame" x="8" y="8" width="60" height="60"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uj5-lF-VK3">
@@ -427,7 +428,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bI0-Fo-Ez3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="151" y="767"/>
+            <point key="canvasLocation" x="219" y="767"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xZL-vl-R9Y">
@@ -462,7 +463,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="livsmedel" translatesAutoresizingMaskIntoConstraints="NO" id="wRG-be-Eru">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple" translatesAutoresizingMaskIntoConstraints="NO" id="wRG-be-Eru">
                                 <rect key="frame" x="83" y="108" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="eQj-RS-t7R"/>
@@ -771,8 +772,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="apple" width="152" height="152"/>
         <image name="barchartfilled" width="60" height="60"/>
-        <image name="livsmedel" width="400" height="282"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vEV-cv-bwb"/>

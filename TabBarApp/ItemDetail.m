@@ -38,7 +38,7 @@
     [super viewDidLoad];
     
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    NSString *searchKey = [NSString stringWithFormat:@"%@", self.item[@"number"]];
+     NSString *searchKey = [NSString stringWithFormat:@"%@", self.itemNumber];
     self.favoriteList = delegate.favoriteList;
     if ([self.favoriteList valueForKey:searchKey] == nil) {
         self.addToFavoritesButton.enabled = YES;
@@ -50,7 +50,7 @@
     
     // Need to check for saved queries as well.
     
-    NSString *searchString = [NSString stringWithFormat:@"http://matapi.se/foodstuff/%@", self.item[@"number"]];
+    NSString *searchString = [NSString stringWithFormat:@"http://matapi.se/foodstuff/%@", self.itemNumber];
     NSLog(@"%@",searchString);
     // NSURL *url = [NSURL URLWithString:searchString];
     NSURL *url = [NSURL URLWithString:[searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -73,8 +73,6 @@
                     // update GUI
                     dispatch_async(dispatch_get_main_queue(),^{
                         self.foodItemNameLabel.text = self.searchResult[@"name"];
-                      // float num = [[NSString stringWithFormat:@"%@",self.nutrientValues[@"energyKcal"]]floatValue];
-                        //NSLog(@"%@",self.nutrientValues[@"energyKcal"]);
                         NSLog(@"float value: %.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"energyKcal"]]floatValue]);
                         if (self.nutrientValues[@"energyKcal"] != nil) {
                             self.energy.text =
@@ -160,7 +158,7 @@
 
 
 - (IBAction)onAddToFavorites:(UIBarButtonItem *)sender {
-    NSString *number = [NSString stringWithFormat:@"%@",self.item[@"number"]];
+    NSString *number = [NSString stringWithFormat:@"%@",self.itemNumber];
     NSString *name = self.foodItemNameLabel.text;
     float energy = [self.energy.text floatValue];
     float protein = [self.protein.text floatValue];
@@ -182,17 +180,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

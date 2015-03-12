@@ -8,8 +8,10 @@
 
 #import "SearchResultTableViewController.h"
 #import "ItemDetail.h"
+#import "SearchResultTableViewCell.h"
 
 @interface SearchResultTableViewController ()
+
 @property (nonatomic) NSArray *filteredResult;
 @property (nonatomic) NSMutableArray *itemDetails;
 @property (nonatomic) NSMutableArray *foodItemNames;
@@ -61,14 +63,15 @@
     
     if (tableView == self.tableView) {
         array = self.searchResult;
-        cellIdentifier = @"SearchResultCell";        
+        cellIdentifier = @"SearchResultCell";
     } else {
         array = self.filteredResult;
         cellIdentifier = @"FilteredCell";
     }
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    SearchResultTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     label = (UILabel *)[cell.contentView viewWithTag:1];
-   label.text = array[indexPath.row][@"name"];
+    label.text = array[indexPath.row][@"name"];
+    cell.itemNumber = array[indexPath.row][@"number"];
     return cell;
 }
 
@@ -134,30 +137,22 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    NSIndexPath *indexPath;
+   // NSIndexPath *indexPath;
     ItemDetail *detailView = [segue destinationViewController];
+    SearchResultTableViewCell *cell = (SearchResultTableViewCell*)sender;
     
     //self.searchDisplayController.searchResultsTableView
     
     // Create an ns dictionary with number and name to send over to detail view
  
      if ([segue.identifier isEqualToString:@"ShowFoodItemDetail"] ) {
-         indexPath = [self.tableView indexPathForSelectedRow];
-     detailView.item = self.searchResult[indexPath.row];
-     } else if ([segue.identifier isEqualToString:@"ShowFilteredItemDetail"]) {
-         indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-     detailView.item = self.filteredResult[indexPath.row];
-         
+         //indexPath = [self.tableView indexPathForSelectedRow];
+         detailView.itemNumber =  cell.itemNumber;             } else if ([segue.identifier isEqualToString:@"ShowFilteredItemDetail"]) {
+             detailView.itemNumber =  cell.itemNumber;
+        // indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
      } else {
      NSLog(@"You forgot the segue %@",segue);
      }
-    
-    /*if ([segue.identifier isEqualToString:@"ShowFoodItemDetail"] ) {
-     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-     detailView.item = self.searchResult[indexPath.row];
-     } else {
-     NSLog(@"You forgot the segue %@",segue);
-     }*/
 }
 
 @end

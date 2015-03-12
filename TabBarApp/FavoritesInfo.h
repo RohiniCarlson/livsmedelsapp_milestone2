@@ -13,4 +13,8 @@
 
 @property (nonatomic) FoodItem *foodItem;
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
+
 @end

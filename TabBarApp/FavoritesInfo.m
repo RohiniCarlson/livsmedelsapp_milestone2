@@ -33,28 +33,55 @@
     self.fibreLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.fibre];
     self.saltLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.salt];
     self.waterLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.water];
+    
+    UIImage *image = [UIImage imageWithContentsOfFile:[self cachePath:self.foodItem.number]];
+    if (image) {
+        self.foodPhoto.image = image;
+    } else {
+        self.foodPhoto.image = [UIImage imageNamed:@"apple"];
+        NSLog(@"Failed to fetch image %@ from file system", [self cachePath:self.foodItem.number] );
+    }
+}
+
+-(NSString*)cachePath:(NSString*)imageName {
+    
+    NSArray *dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = dirs[0];
+    NSString *completePath = [documentDirectory stringByAppendingPathComponent:[imageName stringByAppendingString:@".png"]];
+    return completePath;
+}
+
+-(void) saveImageToCache:(UIImage*)image withName:(NSString*)imageName{
+    NSString *imagePath = [self cachePath:imageName];
+    NSData *data = UIImagePNGRepresentation(self.foodPhoto.image);
+    BOOL success =[data writeToFile:imagePath atomically:YES];
+    if (!success) {
+        NSLog(@"Failed to save image to cache");
+    } else {
+        self.foodItem.imagePath = imagePath;
+    }
 }
 
 
 - (IBAction)takePhoto:(UIBarButtonItem *)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-    }
-    else
-    {
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    }
-    [imagePicker setDelegate:self];
+    imagePicker.delegate = self;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
--(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    [self.foodPhoto setImage:image];
-    [self dismissViewControllerAnimated:NO completion:nil];
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.foodPhoto.image = image;
+    [self saveImageToCache:image withName:self.foodItem.number];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {

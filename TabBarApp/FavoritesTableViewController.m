@@ -35,6 +35,7 @@
                                               otherButtonTitles:nil];
         [alert show];
     }
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -63,18 +64,30 @@
     return self.favoriteListArray.count;
 }
 
+-(NSString*)cachePath:(NSString*)imageName {
+    
+    NSArray *dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = dirs[0];
+    NSString *completePath = [documentDirectory stringByAppendingPathComponent:[imageName stringByAppendingString:@".png"]];
+    return completePath;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:
     (NSIndexPath *)indexPath {
-    
+    FoodItem *foodItem = (FoodItem*)self.favoriteListArray[indexPath.row];
     NSString *cellIdentifier = @"FavoriteCell";
-    
+    UIImage *savedImage = [UIImage imageWithContentsOfFile:[self cachePath:foodItem.number]];
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    // To be implemented!
-   // UIImage *image = (UIImage*)[cell.contentView viewWithTag:2];
+   UIImageView *foodImage = (UIImageView*)[cell.contentView viewWithTag:2];
+    if(savedImage) {
+        foodImage.image = savedImage;
+    } else {
+        foodImage.image = [UIImage imageNamed:@"apple"];
+    }
     UILabel *itemNameLabel = (UILabel*)[cell.contentView viewWithTag:3];
     UILabel *itemEnergyLabel = (UILabel*)[cell.contentView viewWithTag:4];
-    FoodItem *foodItem = (FoodItem*)self.favoriteListArray[indexPath.row];
+    
     itemNameLabel.text = foodItem.name;
     itemEnergyLabel.text = [NSString stringWithFormat:@"Innehåller %.2f kcal",foodItem.energy];
     return cell;
@@ -112,6 +125,7 @@
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
+ // [[[NSFileManager] defaultFileManager] removeItemAtPath:pathNmae error:nil];
 }
 */
 
