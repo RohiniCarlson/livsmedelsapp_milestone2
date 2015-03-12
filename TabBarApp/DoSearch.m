@@ -10,17 +10,22 @@
 #import "SearchResultTableViewController.h"
 
 @interface DoSearch ()
-
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
-
 @property (nonatomic) NSArray *searchResult;
-
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
 @end
 
 @implementation DoSearch
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.searchButton.alpha = 0.0f;
+    self.searchButton.transform = CGAffineTransformMakeScale(0.1,0.1);
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.5];
+    self.searchButton.transform = CGAffineTransformMakeScale(1,1);
+    self.searchButton.alpha = 1.0f;
+    [UIView commitAnimations];
 }
 
 - (void)didReceiveMemoryWarning {

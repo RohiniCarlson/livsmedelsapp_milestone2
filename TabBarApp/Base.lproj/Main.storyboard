@@ -350,6 +350,7 @@
                                     <constraint firstAttribute="height" constant="30" id="sMD-BJ-rIA"/>
                                     <constraint firstAttribute="width" constant="80" id="ydc-hY-VeO"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Sök">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -375,6 +376,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sök Livsmedel" id="Rxx-vC-b53"/>
                     <connections>
+                        <outlet property="searchButton" destination="jrG-HT-Pv1" id="IyI-Ea-USX"/>
                         <outlet property="searchTextField" destination="1WL-sH-e6e" id="07A-Ag-gp6"/>
                         <segue destination="wRE-ft-AlY" kind="show" identifier="ShowSearchResult" id="Oaw-GP-jRB"/>
                     </connections>
