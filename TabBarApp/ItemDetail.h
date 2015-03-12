@@ -10,8 +10,6 @@
 
 @interface ItemDetail : UIViewController
 
-//@property (nonatomic) NSDictionary *item;
 @property (nonatomic) NSString *itemNumber;
-//@property (nonatomic) NSArray *mainSearchResult;
 
 @end

@@ -61,20 +61,22 @@
         }
         NSError *parsingError = nil;
         self.searchResult =[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parsingError];
-        if(!parsingError) {
-            if(self.searchResult.count > 0) {
-                [self performSegueWithIdentifier:@"ShowSearchResult" sender:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(!parsingError) {
+                if(self.searchResult.count > 0) {
+                    [self performSegueWithIdentifier:@"ShowSearchResult" sender:nil];
+                } else {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No results found"
+                                                                    message:@"Sorry! No search results matched your query."
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil];
+                    [alert show];
+                }
             } else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No results found"
-                                                                message:@"Sorry! No search results matched your query."
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-                [alert show];
+                NSLog(@"Couldn't parse json: %@", parsingError);
             }
-        } else {
-            NSLog(@"Couldn't parse json: %@", parsingError);
-        }
+        });
     }];
     [task resume];
     [self.view endEditing:YES];

@@ -52,7 +52,6 @@
     
     NSString *searchString = [NSString stringWithFormat:@"http://matapi.se/foodstuff/%@", self.itemNumber];
     NSLog(@"%@",searchString);
-    // NSURL *url = [NSURL URLWithString:searchString];
     NSURL *url = [NSURL URLWithString:[searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

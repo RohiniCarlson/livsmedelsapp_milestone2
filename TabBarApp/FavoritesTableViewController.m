@@ -72,7 +72,6 @@
     return completePath;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:
     (NSIndexPath *)indexPath {
     FoodItem *foodItem = (FoodItem*)self.favoriteListArray[indexPath.row];

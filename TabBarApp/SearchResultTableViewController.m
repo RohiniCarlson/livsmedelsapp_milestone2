@@ -136,20 +136,12 @@
 }*/
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-   // NSIndexPath *indexPath;
     ItemDetail *detailView = [segue destinationViewController];
     SearchResultTableViewCell *cell = (SearchResultTableViewCell*)sender;
-    
-    //self.searchDisplayController.searchResultsTableView
-    
-    // Create an ns dictionary with number and name to send over to detail view
- 
      if ([segue.identifier isEqualToString:@"ShowFoodItemDetail"] ) {
-         //indexPath = [self.tableView indexPathForSelectedRow];
-         detailView.itemNumber =  cell.itemNumber;             } else if ([segue.identifier isEqualToString:@"ShowFilteredItemDetail"]) {
+         detailView.itemNumber =  cell.itemNumber;
+     } else if ([segue.identifier isEqualToString:@"ShowFilteredItemDetail"]) {
              detailView.itemNumber =  cell.itemNumber;
-        // indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
      } else {
      NSLog(@"You forgot the segue %@",segue);
      }
