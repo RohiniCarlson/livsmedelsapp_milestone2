@@ -383,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1588" y="-1084"/>
+            <point key="canvasLocation" x="1549" y="-1093"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="zxV-Mb-iRD">
@@ -734,10 +734,44 @@
             </objects>
             <point key="canvasLocation" x="-267" y="767"/>
         </scene>
+        <!--Comparison Table Table View Controller-->
+        <scene sceneID="x56-29-GS2">
+            <objects>
+                <tableViewController id="pLZ-E7-eBa" customClass="ComparisonTableTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="stu-8c-5fO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComparisonSearchCell" id="aQc-22-zbf">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aQc-22-zbf" id="qAu-wB-oN1">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pLZ-E7-eBa" id="WYK-Bm-pdx"/>
+                            <outlet property="delegate" destination="pLZ-E7-eBa" id="Xxs-Yi-6VK"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="LAn-9B-2qN"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="YtB-ag-Ygo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EOF-rk-MVF"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3eo-Gf-EUT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1462" y="-1660"/>
+        </scene>
         <!--Jämföra Livsmedel-->
         <scene sceneID="s1o-22-YEA">
             <objects>
-                <viewController id="LOB-VK-48Y" sceneMemberID="viewController">
+                <viewController id="LOB-VK-48Y" customClass="ComparisonSearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tb2-rj-4nn"/>
                         <viewControllerLayoutGuide type="bottom" id="gkT-iR-yPP"/>
@@ -748,10 +782,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Jämföra Livsmedel" id="A0C-Xp-2U9"/>
+                    <connections>
+                        <segue destination="pLZ-E7-eBa" kind="show" identifier="ShowComparisonSelection" id="WXQ-I2-jqf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3C-le-DbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="139"/>
+            <point key="canvasLocation" x="1042" y="139"/>
         </scene>
         <!--Comparison-->
         <scene sceneID="49O-wX-RkX">

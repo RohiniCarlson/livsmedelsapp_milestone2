@@ -9,6 +9,7 @@
 #import "SearchResultTableViewController.h"
 #import "ItemDetail.h"
 #import "SearchResultTableViewCell.h"
+#import "AppDelegate.h"
 
 @interface SearchResultTableViewController ()
 
@@ -17,6 +18,7 @@
 @property (nonatomic) NSMutableArray *foodItemNames;
 @property (nonatomic) NSDictionary *item;
 @property (nonatomic) NSIndexPath *indexItemClicked;
+@property (nonatomic) AppDelegate *delegate;
 
 @end
 
@@ -28,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.delegate = [UIApplication sharedApplication].delegate;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -49,8 +52,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.tableView) {
+        NSLog(@"Number of rows in search result: %d", self.searchResult.count);
         return self.searchResult.count;
     } else {
+         NSLog(@"Number of rows in filtered result: %d", self.filteredResult.count);
         return self.filteredResult.count;
     }
 }
@@ -78,6 +83,23 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF['name'] contains[c] %@", searchText];
     self.filteredResult = [self.searchResult filteredArrayUsingPredicate:predicate];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    //NSLog(@"Number of rows in filtered result: %d", self.filteredResult.count);
+    self.delegate.searchBarActive = NO;
+    if(self.searchResult.count > 0) {
+        self.delegate.searchResultForComparison = self.searchResult;
+    }
+    NSLog(@"Search bar no longer active!!");
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    self.delegate.searchBarActive = YES;
+    if(self.filteredResult.count > 0) {
+        self.delegate.searchResultForComparison = self.filteredResult;
+    }
+    NSLog(@"Search bar active!!");
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
