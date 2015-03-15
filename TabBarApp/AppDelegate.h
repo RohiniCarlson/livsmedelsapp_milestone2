@@ -16,12 +16,7 @@
 
 @property(nonatomic) NSMutableDictionary *favoriteList;
 
-@property(nonatomic) int numResults;
-
 @property(nonatomic) NSArray *searchResultForComparison;
-
-@property(nonatomic) BOOL searchBarActive;
-
 
 @end
 

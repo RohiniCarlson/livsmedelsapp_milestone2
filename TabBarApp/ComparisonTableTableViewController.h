@@ -10,8 +10,4 @@
 
 @interface ComparisonTableTableViewController : UITableViewController
 
-@property(nonatomic) int numResults;
-
-@property(nonatomic) NSArray *searchResultForComparison;
-
 @end

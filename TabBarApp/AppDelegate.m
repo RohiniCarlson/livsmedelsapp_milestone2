@@ -17,8 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self loadFromUserDefaults];
-    self.searchBarActive = NO;
-    self.numResults = 5;
     return YES;
 }
 

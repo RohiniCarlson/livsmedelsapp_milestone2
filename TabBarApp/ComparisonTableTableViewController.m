@@ -7,24 +7,39 @@
 //
 
 #import "ComparisonTableTableViewController.h"
+#import "AppDelegate.h"
 
 @interface ComparisonTableTableViewController ()
-
+@property(nonatomic) NSArray *searchResultForComparison;
+@property (nonatomic) NSArray *itemsForComparison;
 @end
 
 @implementation ComparisonTableTableViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    self.searchResultForComparison = delegate.searchResultForComparison;
+     NSLog(@"Comparison view (viewWillAppear: num rows): %d", delegate.searchResultForComparison.count);
+    [self.tableView reloadData];
+}
+
+/*
+ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Compare Food Items"
+ message:@"Please select two food items for comparison."
+ delegate:nil
+ cancelButtonTitle:@"OK"
+ otherButtonTitles:nil];
+ [alert show];
+
+ */
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    self.searchResultForComparison = delegate.searchResultForComparison;
+    NSLog(@"Comparison view (viewDidLoad: num rows): %d", delegate.searchResultForComparison.count);
+    [self.tableView reloadData];
     self.tableView.allowsMultipleSelection = YES;
-    self.searchResultForComparison = @[@"Bröd", @"Mjölk", @"Ost", @"Korv", @"Smör", @"Ägg", @"Juice"];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Compare Food Items"
-                                                    message:@"Please select two food items from the table and then click the Done button on the navigation bar to do the comparison."
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,7 +66,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"ComparisonSearchCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = self.searchResultForComparison[indexPath.row];
+    cell.textLabel.text = self.searchResultForComparison[indexPath.row][@"name"];
     return cell;
 }
 

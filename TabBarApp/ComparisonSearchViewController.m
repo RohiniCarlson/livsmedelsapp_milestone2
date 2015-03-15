@@ -18,15 +18,10 @@
 
 @implementation ComparisonSearchViewController
 
-- (void)viewWillAppear:(BOOL)animated {
+/*- (void)viewWillAppear:(BOOL)animated {
 
      AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    self.numResults = delegate.numResults;
-    if(self.numResults > 0){
-        delegate.numResults = 0;
-        [self performSegueWithIdentifier:@"ShowComparisonSelection" sender:nil];
-    }
-}
+}*/
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,15 +37,12 @@
 #pragma mark - Navigation
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+/*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ComparisonTableTableViewController *tableView = [segue destinationViewController];
     if ([segue.identifier isEqualToString:@"ShowComparisonSelection"]){
-        if(self.numResults > 0) {
-            tableView.numResults = self.numResults;
-        }
     } else {
         NSLog(@"You forgot the segue %@",segue);
     }
-}
+}*/
 
 @end

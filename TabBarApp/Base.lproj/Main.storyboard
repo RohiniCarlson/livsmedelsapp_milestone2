@@ -734,7 +734,7 @@
             </objects>
             <point key="canvasLocation" x="-267" y="767"/>
         </scene>
-        <!--Comparison Table Table View Controller-->
+        <!--Jämföra Livsmedel-->
         <scene sceneID="x56-29-GS2">
             <objects>
                 <tableViewController id="pLZ-E7-eBa" customClass="ComparisonTableTableViewController" sceneMemberID="viewController">
@@ -758,37 +758,39 @@
                     <toolbarItems>
                         <barButtonItem title="Item" id="LAn-9B-2qN"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="YtB-ag-Ygo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EOF-rk-MVF"/>
+                    <navigationItem key="navigationItem" title="Jämföra Livsmedel" id="YtB-ag-Ygo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EOF-rk-MVF">
+                            <connections>
+                                <segue destination="Elf-Zv-Ocg" kind="show" id="xWS-EH-KR2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3eo-Gf-EUT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1462" y="-1660"/>
+            <point key="canvasLocation" x="1106" y="139"/>
         </scene>
         <!--Jämföra Livsmedel-->
-        <scene sceneID="s1o-22-YEA">
+        <scene sceneID="NL1-zQ-1cg">
             <objects>
-                <viewController id="LOB-VK-48Y" customClass="ComparisonSearchViewController" sceneMemberID="viewController">
+                <viewController id="Elf-Zv-Ocg" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Tb2-rj-4nn"/>
-                        <viewControllerLayoutGuide type="bottom" id="gkT-iR-yPP"/>
+                        <viewControllerLayoutGuide type="top" id="SKD-ix-1no"/>
+                        <viewControllerLayoutGuide type="bottom" id="rFv-ag-eB2"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eXQ-xa-yga">
+                    <view key="view" contentMode="scaleToFill" id="d2v-bB-70j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Jämföra Livsmedel" id="A0C-Xp-2U9"/>
-                    <connections>
-                        <segue destination="pLZ-E7-eBa" kind="show" identifier="ShowComparisonSelection" id="WXQ-I2-jqf"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Jämföra Livsmedel" id="YLx-Cj-Ryh"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o3C-le-DbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qfz-X2-MGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042" y="139"/>
+            <point key="canvasLocation" x="1621" y="139"/>
         </scene>
         <!--Comparison-->
         <scene sceneID="49O-wX-RkX">
@@ -802,7 +804,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="LOB-VK-48Y" kind="relationship" relationship="rootViewController" id="2J4-k2-ZjI"/>
+                        <segue destination="pLZ-E7-eBa" kind="relationship" relationship="rootViewController" id="1kd-cm-NrB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7t-i4-VYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
