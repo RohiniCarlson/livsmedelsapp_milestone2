@@ -12,30 +12,22 @@
 #import "AppDelegate.h"
 
 @interface SearchResultTableViewController ()
-
 @property (nonatomic) NSArray *filteredResult;
 @property (nonatomic) NSMutableArray *itemDetails;
 @property (nonatomic) NSMutableArray *foodItemNames;
 @property (nonatomic) NSDictionary *item;
 @property (nonatomic) NSIndexPath *indexItemClicked;
 @property (nonatomic) AppDelegate *delegate;
-@property (nonatomic) BOOL searchCancelButtonPressed;
-//@property (nonatomic) BOOL searchButtonPressed;
-
-
 @end
 
 @implementation SearchResultTableViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
-    self.searchCancelButtonPressed = NO;
-    //self.searchButtonPressed =  NO;
     self.delegate = [UIApplication sharedApplication].delegate;
     if(self.searchResult.count > 0) {
         self.delegate.searchResultForComparison = self.searchResult;
     }
-
 }
 
 - (void)viewDidLoad {
@@ -51,7 +43,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -92,28 +83,12 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF['name'] contains[c] %@", searchText];
     self.filteredResult = [self.searchResult filteredArrayUsingPredicate:predicate];
     self.delegate.searchResultForComparison = self.filteredResult;
-    NSLog(@"searchBarTextDidBeginEditing %d", self.delegate.searchResultForComparison.count);
+    NSLog(@"searchBarTextDidBeginEditing %lu", (unsigned long)self.delegate.searchResultForComparison.count);
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    self.searchCancelButtonPressed = YES;
+    self.delegate.searchResultForComparison = self.searchResult;
 }
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
-    if (self.searchCancelButtonPressed) {
-        self.delegate.searchResultForComparison = self.searchResult;
-        NSLog(@"cancel button pressed");
-    } else {
-        self.delegate.searchResultForComparison = self.filteredResult;
-        NSLog(@"cancel button not pressed");
-    }
-    NSLog(@"searchBarTextDidEndEditing");
-}
-
-/*- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    self.searchButtonPressed = YES;
-    //self.searchCancelButtonPressed = NO;
-}*/
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
  {

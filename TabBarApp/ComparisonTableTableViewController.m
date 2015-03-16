@@ -7,6 +7,7 @@
 //
 
 #import "ComparisonTableTableViewController.h"
+#import "SearchResultTableViewCell.h"
 #import "AppDelegate.h"
 
 @interface ComparisonTableTableViewController ()
@@ -19,7 +20,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     self.searchResultForComparison = delegate.searchResultForComparison;
-     NSLog(@"Comparison view (viewWillAppear: num rows): %d", delegate.searchResultForComparison.count);
+     NSLog(@"Comparison view (viewWillAppear: num rows): %lu", (unsigned long)delegate.searchResultForComparison.count);
     [self.tableView reloadData];
 }
 
@@ -35,10 +36,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    /*AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     self.searchResultForComparison = delegate.searchResultForComparison;
     NSLog(@"Comparison view (viewDidLoad: num rows): %d", delegate.searchResultForComparison.count);
-    [self.tableView reloadData];
+    [self.tableView reloadData];*/
     self.tableView.allowsMultipleSelection = YES;
     
     // Uncomment the following line to preserve selection between presentations.
@@ -65,8 +66,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"ComparisonSearchCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = self.searchResultForComparison[indexPath.row][@"name"];
+    SearchResultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.itemNameForComparison.text = self.searchResultForComparison[indexPath.row][@"name"];
     return cell;
 }
 

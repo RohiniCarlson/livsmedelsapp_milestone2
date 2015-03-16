@@ -10,5 +10,6 @@
 
 @interface SearchResultTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *itemName;
+@property (strong, nonatomic) IBOutlet UILabel *itemNameForComparison;
 @property (nonatomic) NSString *itemNumber;
 @end
