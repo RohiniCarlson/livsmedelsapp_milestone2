@@ -9,37 +9,37 @@
 #import "ComparisonTableTableViewController.h"
 #import "SearchResultTableViewCell.h"
 #import "AppDelegate.h"
+#import "ComparisonResultViewController.h"
+#import "FoodItem.h"
 
 @interface ComparisonTableTableViewController ()
 @property(nonatomic) NSArray *searchResultForComparison;
-@property (nonatomic) NSArray *itemsForComparison;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+
+//@property (nonatomic) NSArray *itemsForComparison;
+@property(nonatomic) NSInteger *count;
 @end
 
 @implementation ComparisonTableTableViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    self.searchResultForComparison = delegate.searchResultForComparison;
-     NSLog(@"Comparison view (viewWillAppear: num rows): %lu", (unsigned long)delegate.searchResultForComparison.count);
+    if(delegate.searchResultForComparison > 0){
+         self.searchResultForComparison = delegate.searchResultForComparison;
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No food items available"
+                                                        message:@"Please run a search for food items before comparison."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
     [self.tableView reloadData];
 }
 
-/*
- UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Compare Food Items"
- message:@"Please select two food items for comparison."
- delegate:nil
- cancelButtonTitle:@"OK"
- otherButtonTitles:nil];
- [alert show];
-
- */
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    self.searchResultForComparison = delegate.searchResultForComparison;
-    NSLog(@"Comparison view (viewDidLoad: num rows): %d", delegate.searchResultForComparison.count);
-    [self.tableView reloadData];*/
+    self.doneButton.enabled = NO;
     self.tableView.allowsMultipleSelection = YES;
     
     // Uncomment the following line to preserve selection between presentations.
@@ -47,6 +47,20 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (IBAction)onDone:(id)sender {
+    
+    NSLog(@"onDone num rows selected: %lu", (unsigned long)self.tableView.indexPathsForSelectedRows.count);
+        [self performSegueWithIdentifier:@"ShowComparisonResult" sender:nil];
+    // Should deselect selected rows and disable button
+    // [myTable deselectRowAtIndexPath:[myTable indexPathForSelectedRow] animated:YES];
+}
+
+
+-(FoodItem*)selectedItemDetails:(NSString*)itemNumber{
+    FoodItem *item;
+    return item;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,7 +77,6 @@
     return self.searchResultForComparison.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"ComparisonSearchCell";
     SearchResultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -71,17 +84,23 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)theTableView
-didSelectRowAtIndexPath:(NSIndexPath *)newIndexPath {
-    
-    [theTableView deselectRowAtIndexPath:[theTableView indexPathForSelectedRow] animated:NO];
-    UITableViewCell *cell = [theTableView cellForRowAtIndexPath:newIndexPath];
-    if (cell.accessoryType == UITableViewCellAccessoryNone) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        // Reflect selection in data model
-    } else if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        // Reflect deselection in data model
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath   *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+    if(tableView.indexPathsForSelectedRows.count == 2){
+        self.doneButton.enabled = YES;
+    }else{
+        self.doneButton.enabled = NO;
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+    if(tableView.indexPathsForSelectedRows.count == 2){
+        self.doneButton.enabled = YES;
+    }else{
+        self.doneButton.enabled = NO;
     }
 }
 
@@ -120,14 +139,21 @@ didSelectRowAtIndexPath:(NSIndexPath *)newIndexPath {
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowComparisonResult"]){
+        ComparisonResultViewController *resultView = [segue destinationViewController];
+        
+        NSIndexPath *indexPath1 = self.tableView.indexPathsForSelectedRows[0];
+        NSIndexPath *indexPath2 = self.tableView.indexPathsForSelectedRows[1];
+        resultView.itemsForComparison = @[self.searchResultForComparison[indexPath1.row],self.searchResultForComparison[indexPath2.row]];
+    }  else {
+        NSLog(@"You forgot the segue %@",segue);
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

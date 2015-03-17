@@ -99,7 +99,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="utJ-Co-9t6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Energi kcal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aG9-ZM-LbG">
@@ -734,7 +734,7 @@
             </objects>
             <point key="canvasLocation" x="-267" y="767"/>
         </scene>
-        <!--Jämföra Livsmedel-->
+        <!--Jämföra TVÅ Livsmedel-->
         <scene sceneID="x56-29-GS2">
             <objects>
                 <tableViewController id="pLZ-E7-eBa" customClass="ComparisonTableTableViewController" sceneMemberID="viewController">
@@ -766,27 +766,29 @@
                             <outlet property="delegate" destination="pLZ-E7-eBa" id="Xxs-Yi-6VK"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="LAn-9B-2qN"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Jämföra Livsmedel" id="YtB-ag-Ygo">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Jämföra TVÅ Livsmedel" id="YtB-ag-Ygo">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="EOF-rk-MVF">
                             <connections>
-                                <segue destination="Elf-Zv-Ocg" kind="show" id="xWS-EH-KR2"/>
+                                <action selector="onDone:" destination="pLZ-E7-eBa" id="pr1-f2-OuS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="doneButton" destination="EOF-rk-MVF" id="a1v-mU-aiz"/>
+                        <segue destination="Elf-Zv-Ocg" kind="show" identifier="ShowComparisonResult" id="XRP-gS-n9b"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3eo-Gf-EUT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1137" y="139"/>
         </scene>
-        <!--Jämföra Livsmedel-->
+        <!--Jämföra TVÅ Livsmedel-->
         <scene sceneID="NL1-zQ-1cg">
             <objects>
-                <viewController id="Elf-Zv-Ocg" sceneMemberID="viewController">
+                <viewController id="Elf-Zv-Ocg" customClass="ComparisonResultViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SKD-ix-1no"/>
                         <viewControllerLayoutGuide type="bottom" id="rFv-ag-eB2"/>
@@ -794,14 +796,70 @@
                     <view key="view" contentMode="scaleToFill" id="d2v-bB-70j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eN-fZ-846">
+                                <rect key="frame" x="16" y="72" width="286" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Hzi-gE-8Ej"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Hzi-gE-8Ej"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKP-hC-m2j" customClass="GKBarGraph">
+                                <rect key="frame" x="18" y="111" width="286" height="140"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4g1-mt-go4" customClass="GKBarGraph">
+                                <rect key="frame" x="16" y="288" width="286" height="140"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQi-Mc-NGM">
+                                <rect key="frame" x="16" y="259" width="286" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ZhZ-Sc-c0T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="eKP-hC-m2j" secondAttribute="centerX" constant="-1" id="3dG-GN-gGu"/>
+                            <constraint firstItem="4g1-mt-go4" firstAttribute="top" secondItem="gQi-Mc-NGM" secondAttribute="bottom" constant="8" symbolic="YES" id="4OK-51-Tmu"/>
+                            <constraint firstItem="4g1-mt-go4" firstAttribute="leading" secondItem="gQi-Mc-NGM" secondAttribute="leading" id="Dse-yF-NLD"/>
+                            <constraint firstAttribute="centerX" secondItem="4g1-mt-go4" secondAttribute="centerX" constant="1" id="I2a-m9-oZv"/>
+                            <constraint firstItem="4g1-mt-go4" firstAttribute="leading" secondItem="7eN-fZ-846" secondAttribute="leading" id="KDb-GU-Zz1"/>
+                            <constraint firstItem="7eN-fZ-846" firstAttribute="leading" secondItem="d2v-bB-70j" secondAttribute="leadingMargin" id="OL4-QN-FI7"/>
+                            <constraint firstItem="rFv-ag-eB2" firstAttribute="top" secondItem="4g1-mt-go4" secondAttribute="bottom" constant="8" symbolic="YES" id="PrT-d2-oaY"/>
+                            <constraint firstAttribute="centerY" secondItem="gQi-Mc-NGM" secondAttribute="centerY" constant="-29.5" id="RHE-xq-nam"/>
+                            <constraint firstItem="4g1-mt-go4" firstAttribute="trailing" secondItem="gQi-Mc-NGM" secondAttribute="trailing" id="ffg-R5-wNS"/>
+                            <constraint firstItem="eKP-hC-m2j" firstAttribute="top" secondItem="7eN-fZ-846" secondAttribute="bottom" constant="8" symbolic="YES" id="hh0-0Y-Y47"/>
+                            <constraint firstItem="eKP-hC-m2j" firstAttribute="trailing" secondItem="d2v-bB-70j" secondAttribute="trailingMargin" id="ljn-OW-1zb"/>
+                            <constraint firstItem="gQi-Mc-NGM" firstAttribute="top" secondItem="eKP-hC-m2j" secondAttribute="bottom" constant="8" symbolic="YES" id="plx-Jx-FSQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7eN-fZ-846" secondAttribute="trailing" constant="2" id="wlc-4G-iFf"/>
+                            <constraint firstItem="7eN-fZ-846" firstAttribute="top" secondItem="SKD-ix-1no" secondAttribute="bottom" constant="8" symbolic="YES" id="ze6-6H-iJA"/>
+                            <constraint firstItem="eKP-hC-m2j" firstAttribute="height" secondItem="4g1-mt-go4" secondAttribute="height" id="zyr-sP-HFj"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Jämföra Livsmedel" id="YLx-Cj-Ryh"/>
+                    <navigationItem key="navigationItem" title="Jämföra TVÅ Livsmedel" id="YLx-Cj-Ryh"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="barGraphOne" destination="eKP-hC-m2j" id="bBt-Pj-G5f"/>
+                        <outlet property="barGraphTwo" destination="4g1-mt-go4" id="DPq-hC-3T5"/>
+                        <outlet property="itemOneLabel" destination="7eN-fZ-846" id="uVk-Y4-Yyn"/>
+                        <outlet property="itemTwoLabel" destination="gQi-Mc-NGM" id="zNC-f7-PJe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfz-X2-MGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1621" y="139"/>
+            <point key="canvasLocation" x="1629" y="109"/>
         </scene>
         <!--Comparison-->
         <scene sceneID="49O-wX-RkX">
@@ -828,6 +886,6 @@
         <image name="barchartfilled" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vEV-cv-bwb"/>
+        <segue reference="fI0-1v-cwD"/>
     </inferredMetricsTieBreakers>
 </document>
