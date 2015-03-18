@@ -434,7 +434,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorites" id="GBB-Sp-Lvo">
-                        <barButtonItem key="rightBarButtonItem" title="Compare" id="hdg-o8-whw"/>
+                        <barButtonItem key="rightBarButtonItem" title="Compare" id="IBh-tx-RP9">
+                            <connections>
+                                <action selector="onCompare:" destination="v2v-fm-hwh" id="Z9D-b7-E9H"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="pLZ-E7-eBa" kind="show" identifier="ShowFavoritesForComparison" id="rjT-zC-eN2"/>
@@ -883,6 +887,25 @@
                     <view key="view" contentMode="scaleToFill" id="jk7-Ej-VW7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="livsmedel" translatesAutoresizingMaskIntoConstraints="NO" id="vPj-yw-dDM">
+                                <rect key="frame" x="59" y="128" width="202" height="159"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vill du veta vad du äter?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1L-Ba-f6X">
+                                <rect key="frame" x="77" y="72" width="192" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSE-3Q-SE5">
+                                <rect key="frame" x="17" y="304" width="287" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">I så fall är den här appen din räddning! Mata in namnet på ett livsmedel och veta dess näringsinnehållet.  Du kan också lägga till livsmedel till en favoritlista samt en bild och även jämföra näringsinnehåll för två livsmedel åt gången.</string>
+                                <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="MUR-B9-iNv"/>
@@ -896,7 +919,7 @@
         <scene sceneID="xwf-li-vxn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q48-Uu-l3D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About" image="list" id="Aaq-HU-epD"/>
+                    <tabBarItem key="tabBarItem" title="About" image="about" id="Aaq-HU-epD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y5k-Xy-qSv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -913,11 +936,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="about" width="60" height="60"/>
         <image name="apple" width="152" height="152"/>
-        <image name="list" width="60" height="60"/>
+        <image name="livsmedel" width="400" height="282"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="rjT-zC-eN2"/>
         <segue reference="fI0-1v-cwD"/>
-        <segue reference="GJn-LJ-Whx"/>
     </inferredMetricsTieBreakers>
 </document>

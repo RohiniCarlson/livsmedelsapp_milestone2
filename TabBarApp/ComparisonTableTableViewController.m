@@ -14,8 +14,6 @@
 @interface ComparisonTableTableViewController ()
 @property(nonatomic) NSArray *searchResultForComparison;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
-
-//@property (nonatomic) NSArray *itemsForComparison;
 @property(nonatomic) NSInteger *count;
 @end
 
@@ -50,7 +48,6 @@
 }
 
 - (IBAction)onDone:(id)sender {
-    NSLog(@"onDone num rows selected: %lu", (unsigned long)self.tableView.indexPathsForSelectedRows.count);
     self.doneButton.enabled = NO;
     [self performSegueWithIdentifier:@"ShowComparisonResult" sender:nil];
 }

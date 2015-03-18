@@ -12,8 +12,8 @@
 #import "FavoritesInfo.h"
 
 @interface FavoritesTableViewController ()
-
 @property (nonatomic) NSArray *favoriteListArray;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *compareButton;
 
 @end
 
@@ -28,12 +28,15 @@
         NSLog(@"%@", item );
     }
     if (self.favoriteListArray.count == 0) {
+        self.compareButton.enabled = NO;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No favorites"
                                                         message:@"Your favorite list is empty at the moment."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+    } else {
+        self.compareButton.enabled = YES;
     }
     [self.tableView reloadData];
 }
@@ -41,18 +44,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView reloadData];
-    //self.tableView.allowsMultipleSelection = YES;
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (IBAction)onCompare:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"ShowFavoritesForComparison" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -139,7 +138,18 @@
         [segue destinationViewController];
         infoView.foodItem = (FoodItem*)self.favoriteListArray[indexPath.row];
         [[[[infoView.tabBarController tabBar]items]objectAtIndex:3]setEnabled:YES];
-    } else {
+    } else if ([segue.identifier isEqualToString:@"ShowFavoritesForComparison"]) {
+        NSMutableArray *favoriteItems = [[NSMutableArray alloc]init];
+        for (int i=0; i<self.favoriteListArray.count; i++) {
+            NSDictionary *items = @{@"name":[self.favoriteListArray[i] name],@"number":[self.favoriteListArray[i]number]};
+            [favoriteItems addObject:items];
+        }
+        NSLog(@"Num items favorites: %d", self.favoriteListArray.count);
+        NSLog(@"Num items array: %d", favoriteItems.count);
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        delegate.searchResultForComparison = favoriteItems;
+    }
+    else {
         NSLog(@"You forgot the segue %@",segue);
     }
 }
