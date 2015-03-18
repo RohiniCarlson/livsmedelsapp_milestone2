@@ -18,6 +18,8 @@
 @property (nonatomic) NSDictionary *item;
 @property (nonatomic) NSIndexPath *indexItemClicked;
 @property (nonatomic) AppDelegate *delegate;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *compareButton;
+
 @end
 
 @implementation SearchResultTableViewController
@@ -27,12 +29,14 @@
     self.delegate = [UIApplication sharedApplication].delegate;
     if(self.searchResult.count > 0) {
         self.delegate.searchResultForComparison = self.searchResult;
+        self.compareButton.enabled = YES;
+    } else {
+        self.compareButton.enabled = NO;
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -152,7 +156,8 @@
          detailView.itemNumber =  cell.itemNumber;
      } else if ([segue.identifier isEqualToString:@"ShowFilteredItemDetail"]) {
              detailView.itemNumber =  cell.itemNumber;
-     } else {
+     } else if ([segue.identifier isEqualToString:@"ShowResultsForComparison"]){
+     }else {
      NSLog(@"You forgot the segue %@",segue);
      }
 }

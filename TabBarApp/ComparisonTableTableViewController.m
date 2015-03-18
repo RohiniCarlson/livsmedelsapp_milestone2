@@ -10,7 +10,6 @@
 #import "SearchResultTableViewCell.h"
 #import "AppDelegate.h"
 #import "ComparisonResultViewController.h"
-#import "FoodItem.h"
 
 @interface ComparisonTableTableViewController ()
 @property(nonatomic) NSArray *searchResultForComparison;
@@ -24,7 +23,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    if(delegate.searchResultForComparison > 0){
+    self.searchResultForComparison = delegate.searchResultForComparison;
+    /*if(delegate.searchResultForComparison > 0){
          self.searchResultForComparison = delegate.searchResultForComparison;
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No food items available"
@@ -33,7 +33,7 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-    }
+    }*/
     [self.tableView reloadData];
 }
 
@@ -50,17 +50,9 @@
 }
 
 - (IBAction)onDone:(id)sender {
-    
     NSLog(@"onDone num rows selected: %lu", (unsigned long)self.tableView.indexPathsForSelectedRows.count);
-        [self performSegueWithIdentifier:@"ShowComparisonResult" sender:nil];
-    // Should deselect selected rows and disable button
-    // [myTable deselectRowAtIndexPath:[myTable indexPathForSelectedRow] animated:YES];
-}
-
-
--(FoodItem*)selectedItemDetails:(NSString*)itemNumber{
-    FoodItem *item;
-    return item;
+    self.doneButton.enabled = NO;
+    [self performSegueWithIdentifier:@"ShowComparisonResult" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +73,8 @@
     NSString *cellIdentifier = @"ComparisonSearchCell";
     SearchResultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.itemNameForComparison.text = self.searchResultForComparison[indexPath.row][@"name"];
+    cell.selected = NO;
+    cell.accessoryType = UITableViewCellAccessoryNone;
     return cell;
 }
 
@@ -103,6 +97,11 @@
         self.doneButton.enabled = NO;
     }
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ return 44;
+ }
 
 
 /*
@@ -151,8 +150,6 @@
     }  else {
         NSLog(@"You forgot the segue %@",segue);
     }
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 
