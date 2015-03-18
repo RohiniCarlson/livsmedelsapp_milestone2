@@ -24,6 +24,7 @@
 @property (nonatomic) NSDictionary *nutrientValues;
 @property (nonatomic) NSMutableDictionary *favoriteList;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addToFavoritesButton;
+@property (strong, nonatomic) IBOutlet UILabel *healthyLabel;
 
 @property UIDynamicAnimator *animator;
 @property UIGravityBehavior *gravity;
@@ -86,6 +87,11 @@
                         }
                         if (self.nutrientValues[@"fat"] != nil) {
                             self.fat.text = [NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"fat"]]floatValue]];
+                            if ([[NSString stringWithFormat:@"%@",self.nutrientValues[@"fat"]]floatValue] > 8) {
+                                self.healthyLabel.text = @"Onyttigt!";
+                            } else {
+                                self.healthyLabel.text = @"Nyttigt!";
+                            }
                         } else {
                             self.fat.text = @"Not found";
                         }

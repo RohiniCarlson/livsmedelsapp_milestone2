@@ -235,6 +235,12 @@
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfG-67-8Yr">
+                                <rect key="frame" x="91" y="388" width="134" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -311,6 +317,7 @@
                         <outlet property="fat" destination="qPZ-LR-o2F" id="ux4-E7-TgT"/>
                         <outlet property="fibre" destination="LpN-ZV-0Ku" id="MHJ-RA-9Mg"/>
                         <outlet property="foodItemNameLabel" destination="IYj-f4-u9o" id="v0A-6S-80O"/>
+                        <outlet property="healthyLabel" destination="bfG-67-8Yr" id="r4S-eO-Vk1"/>
                         <outlet property="protein" destination="PwN-xw-AqI" id="Jcd-9z-SVv"/>
                         <outlet property="salt" destination="4o7-gn-bw4" id="KOo-BQ-QBO"/>
                         <outlet property="water" destination="tbU-Rm-b5A" id="QMc-41-b17"/>
@@ -900,7 +907,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSE-3Q-SE5">
                                 <rect key="frame" x="17" y="304" width="287" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">I så fall är den här appen din räddning! Mata in namnet på ett livsmedel och veta dess näringsinnehållet.  Du kan också lägga till livsmedel till en favoritlista samt en bild och även jämföra näringsinnehåll för två livsmedel åt gången.</string>
+                                <string key="text">I så fall är den här appen din räddning! Mata in namnet på ett livsmedel och får veta dess näringsinnehållet.  Du kan också lägga till livsmedel med bild till en favoritlista och även jämföra näringsinnehåll för två livsmedel åt gången.</string>
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

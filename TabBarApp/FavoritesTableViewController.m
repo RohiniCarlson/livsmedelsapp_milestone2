@@ -144,8 +144,8 @@
             NSDictionary *items = @{@"name":[self.favoriteListArray[i] name],@"number":[self.favoriteListArray[i]number]};
             [favoriteItems addObject:items];
         }
-        NSLog(@"Num items favorites: %d", self.favoriteListArray.count);
-        NSLog(@"Num items array: %d", favoriteItems.count);
+        NSLog(@"Num items favorites: %lu", (unsigned long)self.favoriteListArray.count);
+        NSLog(@"Num items array: %lu", (unsigned long)favoriteItems.count);
         AppDelegate *delegate = [UIApplication sharedApplication].delegate;
         delegate.searchResultForComparison = favoriteItems;
     }
