@@ -8,17 +8,33 @@
 #import <GKBarGraph.h>
 #import "ComparisonResultViewController.h"
 #import "FoodItem.h"
-#import "BarItemOne.h"
-#import "BarItemTwo.h"
+#import "BarItem.h"
 
 @interface ComparisonResultViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *itemOneLabel;
 @property (strong, nonatomic) IBOutlet GKBarGraph *barGraphOne;
 @property (strong, nonatomic) IBOutlet UILabel *itemTwoLabel;
 @property (strong, nonatomic) IBOutlet GKBarGraph *barGraphTwo;
+
+//Labels for item1
+@property (strong, nonatomic) IBOutlet UILabel *proteinItemOne;
+@property (strong, nonatomic) IBOutlet UILabel *fatItemOne;
+@property (strong, nonatomic) IBOutlet UILabel *carbsItemOne;
+@property (strong, nonatomic) IBOutlet UILabel *fibreItemOne;
+@property (strong, nonatomic) IBOutlet UILabel *waterItemOne;
+
+//Labels for item2
+@property (strong, nonatomic) IBOutlet UILabel *proteinItemTwo;
+@property (strong, nonatomic) IBOutlet UILabel *fatItemTwo;
+@property (strong, nonatomic) IBOutlet UILabel *carbsItemTwo;
+@property (strong, nonatomic) IBOutlet UILabel *fibreItemTwo;
+@property (strong, nonatomic) IBOutlet UILabel *waterItemTwo;
+
+
 @property (nonatomic) NSDictionary *searchResult;
 @property (nonatomic) NSDictionary *nutrientValues;
 @property (nonatomic) NSArray *titles;
+@property (nonatomic) NSArray *colors;
 @end
 
 @implementation ComparisonResultViewController
@@ -43,8 +59,13 @@
     [super viewDidLoad];
     self.itemOneLabel.text = self.itemsForComparison[0][@"name"];
     self.itemTwoLabel.text = self.itemsForComparison[1][@"name"];
-    self.titles = @[@"Protein",@"Fett",@"Kolhy.",@"Fibre",@"Vatten"];
-}
+    self.titles = @[@"Pr.",@"Fe.",@"Ko.",@"Fi.",@"Va."];
+    self.colors = @[[UIColor greenColor],
+                    [UIColor orangeColor],
+                    [UIColor magentaColor],
+                    [UIColor yellowColor],
+                    [UIColor blueColor]];
+   }
 
 -(void)getItemOneDetails:(NSString*)itemNumber{
     NSMutableArray *itemDetails = [[NSMutableArray alloc] init];
@@ -65,8 +86,8 @@
             if(self.searchResult > 0) {
                 self.nutrientValues = self.searchResult[@"nutrientValues"];
                 if(self.nutrientValues.count > 0) {
-                    float proteinContent, fatContent, carbContent, fibreContent, waterContent;
-                    if (self.nutrientValues[@"protein"] != nil) {
+                    float proteinContent, fatContent, carbContent, fibreContent, waterContent;                    if (self.nutrientValues[@"protein"] != nil) {
+                        NSLog(@"Should print out protein label %@",[NSString stringWithFormat:@"Protein %@g",self.nutrientValues[@"protein"]]);
                         proteinContent = [[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",self.nutrientValues[@"protein"]]floatValue]]floatValue];
                     } else {
                         proteinContent = 0.0f;
@@ -97,13 +118,41 @@
                     [itemDetails addObject:@(fibreContent)];
                     [itemDetails addObject:@(waterContent)];
                     dispatch_async(dispatch_get_main_queue(),^{
-                        BarItemOne *itemOne = [[BarItemOne alloc]init];
+                        BarItem *itemOne = [[BarItem alloc]init];
                         itemOne.item = itemDetails;
                         itemOne.titles = self.titles;
+                        itemOne.colors = self.colors;
                         self.barGraphOne.dataSource = itemOne;
-                       /* self.barGraphOne.barWidth=10.0f;
-                        self.barGraphOne.marginBar = 20.0f;*/
+                        self.barGraphOne.barWidth=10.0f;
                         [self.barGraphOne draw ];
+                        // Set labels for item one
+                        if (self.nutrientValues[@"protein"] != nil) {
+                        self.proteinItemOne.text = [NSString stringWithFormat:@"Protein %@g",self.nutrientValues[@"protein"]];
+                        } else {
+                            self.proteinItemOne.text = @"Protein 0.0g";
+                        }
+                        if (self.nutrientValues[@"fat"] != nil) {
+                            self.fatItemOne.text = [NSString stringWithFormat:@"Fett %@g",self.nutrientValues[@"fat"]];
+                            
+                        } else {
+                            self.fatItemOne.text = @"Fett 0.0g";
+                        }
+                        if (self.nutrientValues[@"carbohydrates"] != nil) {
+                            self.carbsItemOne.text = [NSString stringWithFormat:@"Kolhydr. %@g",self.nutrientValues[@"carbohydrates"]];
+                        } else {
+                            self.carbsItemOne.text = @"Kolhydr. 0.0g";
+                        }
+                        if (self.nutrientValues[@"fibres"] != nil) {
+                            self.fibreItemOne.text = [NSString stringWithFormat:@"Fibre %@g", self.nutrientValues[@"fibres"]];
+                        } else {
+                            self.fibreItemOne.text = @"Fibre 0.0g";
+                        }
+                        if (self.nutrientValues[@"water"] != nil) {
+                            self.waterItemOne.text = [NSString stringWithFormat:@"Vatten %@g", self.nutrientValues[@"water"]];
+                        } else {
+                            self.waterItemOne.text = @"Vatten 0.0g";
+                        }
+                        
                         
                     });
                 } else {
@@ -181,11 +230,46 @@
                     [itemDetails addObject:@(fibreContent)];
                     [itemDetails addObject:@(waterContent)];
                     dispatch_async(dispatch_get_main_queue(),^{
-                        BarItemTwo *itemTwo = [[BarItemTwo alloc]init];
+                        BarItem *itemTwo = [[BarItem alloc]init];
+                        itemTwo.item = itemDetails;
+                        itemTwo.titles = self.titles;
+                        itemTwo.colors = self.colors;
+                        self.barGraphTwo.dataSource = itemTwo;
+                        self.barGraphTwo.barWidth=10.0f;
+                        [self.barGraphTwo draw ];
+                        // Set labels for item two
+                        if (proteinContent > 0) {
+                            self.proteinItemTwo.text = [NSString stringWithFormat:@"Protein %.2fg",proteinContent];
+                        } else {
+                            self.proteinItemTwo.text = @"Protein 0.0g";
+                        }
+                        if (fatContent > 0) {
+                            self.fatItemTwo.text = [NSString stringWithFormat:@"Fett %.2fg",fatContent];
+                            
+                        } else {
+                            self.fatItemTwo.text = @"Fett 0.0g";
+                        }
+                        if (carbContent > 0) {
+                            self.carbsItemTwo.text = [NSString stringWithFormat:@"Kolhydr. %.2fg",carbContent];
+                        } else {
+                            self.carbsItemTwo.text = @"Kolhydr. 0.0g";
+                        }
+                        if (fibreContent > 0) {
+                            self.fibreItemTwo.text = [NSString stringWithFormat:@"Fibre %.2fg", fibreContent];
+                        } else {
+                            self.fibreItemTwo.text = @"Fibre 0.0g";
+                        }
+                        if (waterContent > 0) {
+                            self.waterItemTwo.text = [NSString stringWithFormat:@"Vatten %.2fg",waterContent];
+                        } else {
+                            self.waterItemTwo.text = @"Vatten 0.0g";
+                        }
+                        
+                       /* BarItemTwo *itemTwo = [[BarItemTwo alloc]init];
                         itemTwo.item = itemDetails;
                         itemTwo.titles = self.titles;
                         self.barGraphTwo.dataSource = itemTwo;
-                        [self.barGraphTwo draw ];
+                        [self.barGraphTwo draw ];*/
                     });
                 } else {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No details found"

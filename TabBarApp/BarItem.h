@@ -1,18 +1,18 @@
 //
-//  BarItemOne.h
-//  GraphDemoTest
+//  BarItem.h
+//  TabBarApp
 //
-//  Created by it-högskolan on 2015-03-16.
+//  Created by it-högskolan on 2015-03-19.
 //  Copyright (c) 2015 it-h&#246;gskolan. All rights reserved.
 //
-
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <GKBarGraph.h>
 
-@interface BarItemOne : NSObject
-<GKBarGraphDataSource>
+@interface BarItem : NSObject<GKBarGraphDataSource>
 
 @property (nonatomic) NSArray *item;
 @property (nonatomic) NSArray *titles;
+@property (nonatomic) NSArray *colors;
 
 @end

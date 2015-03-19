@@ -11,8 +11,7 @@
 		4423D5BD1AB19E610050EEA0 /* SearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4423D5BC1AB19E610050EEA0 /* SearchResultTableViewCell.m */; };
 		4423D5C31AB37F400050EEA0 /* ComparisonTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4423D5C21AB37F400050EEA0 /* ComparisonTableTableViewController.m */; };
 		4423D6361AB76A6A0050EEA0 /* ComparisonResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4423D6351AB76A6A0050EEA0 /* ComparisonResultViewController.m */; };
-		4473DC2B1AB990B00061A238 /* BarItemOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473DC281AB990B00061A238 /* BarItemOne.m */; };
-		4473DC2C1AB990B00061A238 /* BarItemTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473DC2A1AB990B00061A238 /* BarItemTwo.m */; };
+		4429553B1ABB0F0E000C8581 /* BarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4429553A1ABB0F0E000C8581 /* BarItem.m */; };
 		44A1AC531AA240BC001B5F86 /* FoodItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A1AC521AA240BC001B5F86 /* FoodItem.m */; };
 		44A1AC591AA35396001B5F86 /* FavoritesInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A1AC581AA35396001B5F86 /* FavoritesInfo.m */; };
 		44D8DA901AA06EFF0020C86C /* ItemDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D8DA8F1AA06EFF0020C86C /* ItemDetail.m */; };
@@ -44,10 +43,8 @@
 		4423D5C21AB37F400050EEA0 /* ComparisonTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComparisonTableTableViewController.m; sourceTree = "<group>"; };
 		4423D6341AB76A6A0050EEA0 /* ComparisonResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComparisonResultViewController.h; sourceTree = "<group>"; };
 		4423D6351AB76A6A0050EEA0 /* ComparisonResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComparisonResultViewController.m; sourceTree = "<group>"; };
-		4473DC271AB990B00061A238 /* BarItemOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarItemOne.h; sourceTree = "<group>"; };
-		4473DC281AB990B00061A238 /* BarItemOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarItemOne.m; sourceTree = "<group>"; };
-		4473DC291AB990B00061A238 /* BarItemTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarItemTwo.h; sourceTree = "<group>"; };
-		4473DC2A1AB990B00061A238 /* BarItemTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarItemTwo.m; sourceTree = "<group>"; };
+		442955391ABB0F0E000C8581 /* BarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarItem.h; sourceTree = "<group>"; };
+		4429553A1ABB0F0E000C8581 /* BarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarItem.m; sourceTree = "<group>"; };
 		44A1AC511AA240BC001B5F86 /* FoodItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItem.h; sourceTree = "<group>"; };
 		44A1AC521AA240BC001B5F86 /* FoodItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItem.m; sourceTree = "<group>"; };
 		44A1AC571AA35396001B5F86 /* FavoritesInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesInfo.h; sourceTree = "<group>"; };
@@ -142,10 +139,8 @@
 				4423D5C21AB37F400050EEA0 /* ComparisonTableTableViewController.m */,
 				4423D6341AB76A6A0050EEA0 /* ComparisonResultViewController.h */,
 				4423D6351AB76A6A0050EEA0 /* ComparisonResultViewController.m */,
-				4473DC271AB990B00061A238 /* BarItemOne.h */,
-				4473DC281AB990B00061A238 /* BarItemOne.m */,
-				4473DC291AB990B00061A238 /* BarItemTwo.h */,
-				4473DC2A1AB990B00061A238 /* BarItemTwo.m */,
+				442955391ABB0F0E000C8581 /* BarItem.h */,
+				4429553A1ABB0F0E000C8581 /* BarItem.m */,
 			);
 			path = TabBarApp;
 			sourceTree = "<group>";
@@ -330,15 +325,14 @@
 			files = (
 				4423D6361AB76A6A0050EEA0 /* ComparisonResultViewController.m in Sources */,
 				44F39EDB1A9DDED60035CA5B /* SearchResultTableViewController.m in Sources */,
+				4429553B1ABB0F0E000C8581 /* BarItem.m in Sources */,
 				44A1AC591AA35396001B5F86 /* FavoritesInfo.m in Sources */,
 				44A1AC531AA240BC001B5F86 /* FoodItem.m in Sources */,
 				44F39EBC1A9DD09B0035CA5B /* DoSearch.m in Sources */,
-				4473DC2C1AB990B00061A238 /* BarItemTwo.m in Sources */,
 				44F39EB91A9DD09B0035CA5B /* AppDelegate.m in Sources */,
 				44D8DA901AA06EFF0020C86C /* ItemDetail.m in Sources */,
 				4423D5BD1AB19E610050EEA0 /* SearchResultTableViewCell.m in Sources */,
 				44F39EDE1A9DE2F30035CA5B /* FavoritesTableViewController.m in Sources */,
-				4473DC2B1AB990B00061A238 /* BarItemOne.m in Sources */,
 				44F39EB61A9DD09B0035CA5B /* main.m in Sources */,
 				4423D5C31AB37F400050EEA0 /* ComparisonTableTableViewController.m in Sources */,
 			);
