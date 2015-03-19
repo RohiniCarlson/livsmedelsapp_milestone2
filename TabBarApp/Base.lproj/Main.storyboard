@@ -339,31 +339,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exemple sökord: ost" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WL-sH-e6e">
-                                <rect key="frame" x="16" y="125" width="288" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="xzu-6B-siU"/>
-                                </constraints>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exemple sökord: ost" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WL-sH-e6e">
+                                <rect key="frame" x="16" y="314" width="288" height="30"/>
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="onReturn:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="Hxf-S9-IF1"/>
-                                    <action selector="onReturn:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="qxj-qG-EuQ"/>
+                                    <action selector="onChange:" destination="vXZ-lx-hvc" eventType="editingChanged" id="pqC-gO-tod"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sök livsmedel för att kolla näringsinnehåll. " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4l-zx-RIT">
-                                <rect key="frame" x="25" y="100" width="272" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sök livsmedel för att kolla näringsinnehåll. " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4l-zx-RIT">
+                                <rect key="frame" x="25" y="289" width="272" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrG-HT-Pv1">
-                                <rect key="frame" x="121" y="163" width="80" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="sMD-BJ-rIA"/>
-                                    <constraint firstAttribute="width" constant="80" id="ydc-hY-VeO"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrG-HT-Pv1">
+                                <rect key="frame" x="46" y="352" width="80" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Sök">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -372,24 +364,24 @@
                                     <action selector="onSearch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="acm-Hb-l0b"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqW-BF-pnU">
+                                <rect key="frame" x="172" y="352" width="88" height="30"/>
+                                <state key="normal" title="Hämta Alla">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onFetchAll:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YK7-Vq-tbB"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Healthy-foods" translatesAutoresizingMaskIntoConstraints="NO" id="gAw-gx-KBf">
+                                <rect key="frame" x="16" y="72" width="288" height="186"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="b4l-zx-RIT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="9" id="5fL-rK-Any"/>
-                            <constraint firstItem="1WL-sH-e6e" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="6R3-fp-WBf"/>
-                            <constraint firstAttribute="centerX" secondItem="b4l-zx-RIT" secondAttribute="centerX" constant="-1" id="BEe-S1-dOM"/>
-                            <constraint firstItem="1WL-sH-e6e" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="N6K-XV-UUL"/>
-                            <constraint firstItem="jrG-HT-Pv1" firstAttribute="top" secondItem="1WL-sH-e6e" secondAttribute="bottom" constant="8" symbolic="YES" id="NsP-MK-bfi"/>
-                            <constraint firstItem="b4l-zx-RIT" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="36" id="RWo-VC-Eah"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="b4l-zx-RIT" secondAttribute="trailing" constant="7" id="Zfm-WN-Ukt"/>
-                            <constraint firstItem="1WL-sH-e6e" firstAttribute="centerX" secondItem="jrG-HT-Pv1" secondAttribute="centerX" constant="-1" id="dwi-GK-mzb"/>
-                            <constraint firstItem="1WL-sH-e6e" firstAttribute="top" secondItem="b4l-zx-RIT" secondAttribute="bottom" constant="8" symbolic="YES" id="iy7-Z9-Nod"/>
-                            <constraint firstAttribute="centerX" secondItem="jrG-HT-Pv1" secondAttribute="centerX" constant="-1" id="nGj-VK-ms0"/>
-                            <constraint firstAttribute="centerX" secondItem="1WL-sH-e6e" secondAttribute="centerX" id="xQW-LK-9Cs"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sök Livsmedel" id="Rxx-vC-b53"/>
                     <connections>
+                        <outlet property="fetchAllButton" destination="DqW-BF-pnU" id="AgM-Yd-lua"/>
                         <outlet property="searchButton" destination="jrG-HT-Pv1" id="IyI-Ea-USX"/>
                         <outlet property="searchTextField" destination="1WL-sH-e6e" id="07A-Ag-gp6"/>
                         <segue destination="wRE-ft-AlY" kind="show" identifier="ShowSearchResult" id="Oaw-GP-jRB"/>
@@ -413,7 +405,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IRq-HL-fGd" id="Xoa-9j-jm9">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="apple" translatesAutoresizingMaskIntoConstraints="NO" id="wMa-wE-jo6">
+                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cutlery" translatesAutoresizingMaskIntoConstraints="NO" id="wMa-wE-jo6">
                                             <rect key="frame" x="8" y="8" width="60" height="60"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uj5-lF-VK3">
@@ -448,6 +440,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="compareButton" destination="IBh-tx-RP9" id="eXV-bd-EWS"/>
                         <segue destination="pLZ-E7-eBa" kind="show" identifier="ShowFavoritesForComparison" id="rjT-zC-eN2"/>
                     </connections>
                 </tableViewController>
@@ -488,7 +481,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple" translatesAutoresizingMaskIntoConstraints="NO" id="wRG-be-Eru">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cutlery" translatesAutoresizingMaskIntoConstraints="NO" id="wRG-be-Eru">
                                 <rect key="frame" x="83" y="108" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="eQj-RS-t7R"/>
@@ -836,11 +829,11 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKP-hC-m2j" customClass="GKBarGraph">
                                 <rect key="frame" x="16" y="96" width="288" height="148"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4g1-mt-go4" customClass="GKBarGraph">
                                 <rect key="frame" x="16" y="281" width="288" height="147"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQi-Mc-NGM">
                                 <rect key="frame" x="16" y="252" width="288" height="21"/>
@@ -904,10 +897,10 @@
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSE-3Q-SE5">
-                                <rect key="frame" x="17" y="304" width="287" height="120"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSE-3Q-SE5">
+                                <rect key="frame" x="17" y="295" width="287" height="125"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">I så fall är den här appen din räddning! Mata in namnet på ett livsmedel och får veta dess näringsinnehållet.  Du kan också lägga till livsmedel med bild till en favoritlista och även jämföra näringsinnehåll för två livsmedel åt gången.</string>
+                                <string key="text">I så fall är den här appen din räddning! Mata in namnet på ett livsmedel och får veta dess näringsinnehål.  Du kan också lägga till livsmedel med bild till en favoritlista och även jämföra näringsinnehåll för två livsmedel åt gången.</string>
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -943,8 +936,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Healthy-foods" width="320" height="213"/>
         <image name="about" width="60" height="60"/>
-        <image name="apple" width="152" height="152"/>
+        <image name="cutlery" width="600" height="600"/>
         <image name="livsmedel" width="400" height="282"/>
     </resources>
     <inferredMetricsTieBreakers>

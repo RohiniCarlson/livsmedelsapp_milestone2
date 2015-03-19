@@ -24,6 +24,17 @@
 @implementation ComparisonResultViewController
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    NSString *itemNameOne = self.itemsForComparison[0][@"name"];
+    NSString *itemNameTwo = self.itemsForComparison[1][@"name"];
+    if (itemNameOne.length > 15) {
+        itemNameOne = [[itemNameOne substringToIndex:15]stringByAppendingString:@"..."];
+    }
+    if (itemNameTwo.length > 15) {
+        itemNameTwo = [[itemNameTwo substringToIndex:15]stringByAppendingString:@"..."];
+    }
+    NSString *updatedTitle = [NSString stringWithFormat:@"%@/%@",itemNameOne,itemNameTwo];
+    self.title = updatedTitle;
     [self getItemOneDetails:self.itemsForComparison[0][@"number"]];
     [self getItemTwoDetails:self.itemsForComparison[1][@"number"]];
     }
@@ -32,7 +43,7 @@
     [super viewDidLoad];
     self.itemOneLabel.text = self.itemsForComparison[0][@"name"];
     self.itemTwoLabel.text = self.itemsForComparison[1][@"name"];
-    self.titles = @[@"Protein",@"Fett",@"Kolhydrater",@"Fibre",@"Vatten"];
+    self.titles = @[@"Protein",@"Fett",@"Kolhy.",@"Fibre",@"Vatten"];
 }
 
 -(void)getItemOneDetails:(NSString*)itemNumber{
@@ -90,6 +101,8 @@
                         itemOne.item = itemDetails;
                         itemOne.titles = self.titles;
                         self.barGraphOne.dataSource = itemOne;
+                       /* self.barGraphOne.barWidth=10.0f;
+                        self.barGraphOne.marginBar = 20.0f;*/
                         [self.barGraphOne draw ];
                         
                     });

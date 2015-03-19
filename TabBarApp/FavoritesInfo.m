@@ -38,7 +38,7 @@
     if (image) {
         self.foodPhoto.image = image;
     } else {
-        self.foodPhoto.image = [UIImage imageNamed:@"apple"];
+        self.foodPhoto.image = [UIImage imageNamed:@"cutlery"];
         NSLog(@"Failed to fetch image %@ from file system", [self cachePath:self.foodItem.number] );
     }
 }

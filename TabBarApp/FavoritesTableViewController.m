@@ -13,6 +13,7 @@
 
 @interface FavoritesTableViewController ()
 @property (nonatomic) NSArray *favoriteListArray;
+
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *compareButton;
 
 @end
@@ -28,13 +29,13 @@
         NSLog(@"%@", item );
     }
     if (self.favoriteListArray.count == 0) {
-        self.compareButton.enabled = NO;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No favorites"
                                                         message:@"Your favorite list is empty at the moment."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        self.compareButton.enabled = NO;
     } else {
         self.compareButton.enabled = YES;
     }
@@ -44,6 +45,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView reloadData];
+    if (self.favoriteListArray.count>0) {
+        self.compareButton.enabled = YES;
+    } else {
+        self.compareButton.enabled = NO;
+    }
 }
 
 - (IBAction)onCompare:(UIBarButtonItem *)sender {
@@ -82,7 +88,7 @@
     if(savedImage) {
         foodImage.image = savedImage;
     } else {
-        foodImage.image = [UIImage imageNamed:@"apple"];
+        foodImage.image = [UIImage imageNamed:@"cutlery"];
     }
     UILabel *itemNameLabel = (UILabel*)[cell.contentView viewWithTag:3];
     UILabel *itemEnergyLabel = (UILabel*)[cell.contentView viewWithTag:4];

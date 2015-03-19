@@ -26,6 +26,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
+    
     self.delegate = [UIApplication sharedApplication].delegate;
     if(self.searchResult.count > 0) {
         self.delegate.searchResultForComparison = self.searchResult;
