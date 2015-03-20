@@ -63,21 +63,13 @@
 
 - (IBAction)onChange:(UITextField *)sender {
     if (sender.text.length > 0) {
-        NSLog(@"entered");
         self.fetchAllButton.enabled = NO;
     } else {
-        NSLog(@"not entered");
         self.fetchAllButton.enabled = YES;
     }
 }
 
-
 - (IBAction)onFetchAll:(id)sender {
-    /*if (self.searchTextField.text == nil) {
-        self.fetchAllButton.enabled = YES;
-    } else {
-        self.fetchAllButton.enabled = NO;
-    }*/
     NSString *searchString = [NSString stringWithFormat:@"http://matapi.se/foodstuff?query=%@",self.searchTextField.text];
     // Required to remove whitespace from entered search citeria
     searchString = [searchString stringByTrimmingCharactersInSet:
@@ -115,7 +107,6 @@
     [task resume];
     [self.view endEditing:YES];
 }
-
 
 - (IBAction)onSearch:(id)sender {
     NSString *searchString = [NSString stringWithFormat:@"http://matapi.se/foodstuff?query=%@",self.searchTextField.text];

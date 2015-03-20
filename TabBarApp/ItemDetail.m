@@ -49,8 +49,6 @@
         self.addToFavoritesButton.title = @"";
     }
     
-    // Need to check for saved queries as well.
-    
     NSString *searchString = [NSString stringWithFormat:@"http://matapi.se/foodstuff/%@", self.itemNumber];
     NSLog(@"%@",searchString);
     NSURL *url = [NSURL URLWithString:[searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];

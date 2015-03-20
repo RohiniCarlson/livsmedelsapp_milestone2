@@ -341,23 +341,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exemple sökord: ost" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WL-sH-e6e">
-                                <rect key="frame" x="16" y="314" width="288" height="30"/>
-                                <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="onChange:" destination="vXZ-lx-hvc" eventType="editingChanged" id="pqC-gO-tod"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sök livsmedel för att kolla näringsinnehåll. " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4l-zx-RIT">
-                                <rect key="frame" x="25" y="289" width="272" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sök livsmedel för att kolla näringsinnehåll. " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4l-zx-RIT">
+                                <rect key="frame" x="31" y="72" width="275" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="8BC-gP-7Eh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrG-HT-Pv1">
-                                <rect key="frame" x="46" y="352" width="80" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrG-HT-Pv1">
+                                <rect key="frame" x="53" y="135" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="fop-4O-Tx2"/>
+                                    <constraint firstAttribute="height" constant="30" id="tBc-uM-Ux0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Sök">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -366,8 +364,11 @@
                                     <action selector="onSearch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="acm-Hb-l0b"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqW-BF-pnU">
-                                <rect key="frame" x="172" y="352" width="88" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqW-BF-pnU">
+                                <rect key="frame" x="175" y="135" width="75" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="imu-PB-PF9"/>
+                                </constraints>
                                 <state key="normal" title="Hämta Alla">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -375,11 +376,39 @@
                                     <action selector="onFetchAll:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YK7-Vq-tbB"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Healthy-foods" translatesAutoresizingMaskIntoConstraints="NO" id="gAw-gx-KBf">
-                                <rect key="frame" x="16" y="72" width="288" height="186"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Healthy-foods" translatesAutoresizingMaskIntoConstraints="NO" id="gAw-gx-KBf">
+                                <rect key="frame" x="16" y="173" width="288" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gAw-gx-KBf" secondAttribute="height" multiplier="36:25" id="M2t-9p-kNa"/>
+                                </constraints>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exemple sökord: ost                                       " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WL-sH-e6e">
+                                <rect key="frame" x="4" y="97" width="313" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7bW-ye-LSw"/>
+                                </constraints>
+                                <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onChange:" destination="vXZ-lx-hvc" eventType="editingChanged" id="pqC-gO-tod"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jrG-HT-Pv1" firstAttribute="top" secondItem="1WL-sH-e6e" secondAttribute="bottom" constant="8" symbolic="YES" id="RYT-TX-Tes"/>
+                            <constraint firstItem="gAw-gx-KBf" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Uku-Yk-Hlh"/>
+                            <constraint firstAttribute="centerX" secondItem="1WL-sH-e6e" secondAttribute="centerX" id="Y4u-MZ-AAD"/>
+                            <constraint firstItem="jrG-HT-Pv1" firstAttribute="baseline" secondItem="DqW-BF-pnU" secondAttribute="baseline" id="Ybh-p9-Ib7"/>
+                            <constraint firstItem="jrG-HT-Pv1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="37" id="e6i-Hd-cpg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DqW-BF-pnU" secondAttribute="trailing" constant="54" id="i2D-Qh-dO6"/>
+                            <constraint firstAttribute="centerX" secondItem="b4l-zx-RIT" secondAttribute="centerX" constant="-8.5" id="px7-C4-YRq"/>
+                            <constraint firstItem="1WL-sH-e6e" firstAttribute="top" secondItem="b4l-zx-RIT" secondAttribute="bottom" constant="8" symbolic="YES" id="q7R-bQ-g58"/>
+                            <constraint firstItem="b4l-zx-RIT" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="rXy-f6-ZFF"/>
+                            <constraint firstItem="gAw-gx-KBf" firstAttribute="top" secondItem="DqW-BF-pnU" secondAttribute="bottom" constant="8" symbolic="YES" id="xYZ-54-oK0"/>
+                            <constraint firstItem="gAw-gx-KBf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="yND-SB-573"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sök Livsmedel" id="Rxx-vC-b53"/>
                     <connections>

@@ -62,7 +62,6 @@
     }
 }
 
-
 - (IBAction)takePhoto:(UIBarButtonItem *)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.delegate = self;
@@ -81,7 +80,6 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 - (void)didReceiveMemoryWarning {
