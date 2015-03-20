@@ -1106,13 +1106,13 @@
                             <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="livsmedel" translatesAutoresizingMaskIntoConstraints="NO" id="vPj-yw-dDM">
                                 <rect key="frame" x="16" y="101" width="288" height="162"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="vPj-yw-dDM" secondAttribute="height" multiplier="101:74" constant="66.891891891891873" id="uKK-dv-r0K"/>
+                                    <constraint firstAttribute="width" secondItem="vPj-yw-dDM" secondAttribute="height" multiplier="16:9" id="VLd-VP-ZhS"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vill du veta vad du äter?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1L-Ba-f6X">
                                 <rect key="frame" x="65" y="72" width="190" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="VUq-wB-X7c"/>
+                                    <constraint firstAttribute="height" constant="21" id="CIb-tx-KWD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -1122,7 +1122,7 @@
                                 <rect key="frame" x="16" y="349" width="288" height="74"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="74" id="0hS-YD-Uha"/>
+                                    <constraint firstAttribute="height" constant="74" id="SJe-hp-LOV"/>
                                 </constraints>
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1132,7 +1132,7 @@
                                 <rect key="frame" x="16" y="271" width="288" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="rbq-Xs-UuK"/>
+                                    <constraint firstAttribute="height" constant="70" id="15D-1J-vCf"/>
                                 </constraints>
                                 <string key="text">I så fall är den här appen din räddning! Mata in namnet på ett livsmedel och får veta dess näringsinnehål.  Närningsvärdena är angivet i enhet per 100g. </string>
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -1142,20 +1142,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Y1L-Ba-f6X" secondAttribute="centerX" id="9Fx-pO-v8G"/>
-                            <constraint firstItem="GyF-0w-KMv" firstAttribute="top" secondItem="vSE-3Q-SE5" secondAttribute="bottom" constant="8" symbolic="YES" id="D9P-aH-6Ph"/>
-                            <constraint firstItem="Y1L-Ba-f6X" firstAttribute="top" secondItem="2TU-WP-p6j" secondAttribute="bottom" constant="8" symbolic="YES" id="DMJ-qU-5Ar"/>
-                            <constraint firstItem="GyF-0w-KMv" firstAttribute="top" secondItem="vSE-3Q-SE5" secondAttribute="bottom" constant="8" symbolic="YES" id="F5w-Po-t2q"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vPj-yw-dDM" secondAttribute="trailing" id="HbC-q6-JWL"/>
-                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="top" secondItem="vPj-yw-dDM" secondAttribute="bottom" constant="8" symbolic="YES" id="Kzo-eQ-Mqd"/>
-                            <constraint firstItem="hMA-mm-J3T" firstAttribute="top" secondItem="GyF-0w-KMv" secondAttribute="bottom" constant="8" symbolic="YES" id="Mjv-mU-plz"/>
-                            <constraint firstItem="vPj-yw-dDM" firstAttribute="top" secondItem="Y1L-Ba-f6X" secondAttribute="bottom" constant="8" symbolic="YES" id="OMT-4v-af5"/>
-                            <constraint firstItem="GyF-0w-KMv" firstAttribute="leading" secondItem="vSE-3Q-SE5" secondAttribute="leading" id="Q2O-1K-saP"/>
-                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="leading" secondItem="jk7-Ej-VW7" secondAttribute="leadingMargin" id="mLq-qD-vvs"/>
-                            <constraint firstItem="vPj-yw-dDM" firstAttribute="leading" secondItem="jk7-Ej-VW7" secondAttribute="leadingMargin" id="nrR-Mo-U0H"/>
-                            <constraint firstItem="GyF-0w-KMv" firstAttribute="top" secondItem="vSE-3Q-SE5" secondAttribute="bottom" constant="8" symbolic="YES" id="oCH-vJ-QRP"/>
-                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="width" secondItem="GyF-0w-KMv" secondAttribute="width" id="wTr-DP-SHt"/>
-                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="trailing" secondItem="jk7-Ej-VW7" secondAttribute="trailingMargin" id="zHo-0O-wvs"/>
+                            <constraint firstItem="vPj-yw-dDM" firstAttribute="leading" secondItem="jk7-Ej-VW7" secondAttribute="leadingMargin" id="2wm-gv-wjw"/>
+                            <constraint firstItem="vPj-yw-dDM" firstAttribute="top" secondItem="Y1L-Ba-f6X" secondAttribute="bottom" constant="8" symbolic="YES" id="30b-PB-i9j"/>
+                            <constraint firstItem="GyF-0w-KMv" firstAttribute="top" secondItem="vSE-3Q-SE5" secondAttribute="bottom" constant="8" symbolic="YES" id="7C2-12-YSd"/>
+                            <constraint firstItem="GyF-0w-KMv" firstAttribute="leading" secondItem="vSE-3Q-SE5" secondAttribute="leading" id="G24-7v-96X"/>
+                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="trailing" secondItem="jk7-Ej-VW7" secondAttribute="trailingMargin" id="K9A-h1-wSn"/>
+                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="width" secondItem="GyF-0w-KMv" secondAttribute="width" id="KLV-fz-cdK"/>
+                            <constraint firstAttribute="centerX" secondItem="Y1L-Ba-f6X" secondAttribute="centerX" id="Pnt-lx-wrH"/>
+                            <constraint firstItem="Y1L-Ba-f6X" firstAttribute="top" secondItem="2TU-WP-p6j" secondAttribute="bottom" constant="8" symbolic="YES" id="efF-KI-bea"/>
+                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="top" secondItem="vPj-yw-dDM" secondAttribute="bottom" constant="8" symbolic="YES" id="iTG-K1-2DT"/>
+                            <constraint firstItem="vPj-yw-dDM" firstAttribute="trailing" secondItem="jk7-Ej-VW7" secondAttribute="trailingMargin" id="kFY-2a-zAW"/>
+                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="leading" secondItem="jk7-Ej-VW7" secondAttribute="leadingMargin" id="mv5-Y3-4kp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="MUR-B9-iNv"/>
