@@ -26,13 +26,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.nameLabel.text = self.foodItem.name;
-    self.energyLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.energy];
-    self.proteinLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.protein];
-    self.fatLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.fat];
-    self.carbsLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.carbs];
-    self.fibreLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.fibre];
-    self.saltLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.salt];
-    self.waterLabel.text = [NSString stringWithFormat:@"%.2f", self.foodItem.water];
+    self.energyLabel.text = [NSString stringWithFormat:@"%.2f kcal", self.foodItem.energy];
+    self.proteinLabel.text = [NSString stringWithFormat:@"%.2fg", self.foodItem.protein];
+    self.fatLabel.text = [NSString stringWithFormat:@"%.2fg", self.foodItem.fat];
+    self.carbsLabel.text = [NSString stringWithFormat:@"%.2fg", self.foodItem.carbs];
+    self.fibreLabel.text = [NSString stringWithFormat:@"%.2fg", self.foodItem.fibre];
+    self.saltLabel.text = [NSString stringWithFormat:@"%.2fg", self.foodItem.salt];
+    self.waterLabel.text = [NSString stringWithFormat:@"%.2fg", self.foodItem.water];
     
     UIImage *image = [UIImage imageWithContentsOfFile:[self cachePath:self.foodItem.number]];
     if (image) {
