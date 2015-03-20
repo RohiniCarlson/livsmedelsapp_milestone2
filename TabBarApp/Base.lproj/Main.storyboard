@@ -1103,25 +1103,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="livsmedel" translatesAutoresizingMaskIntoConstraints="NO" id="vPj-yw-dDM">
-                                <rect key="frame" x="59" y="128" width="202" height="159"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="livsmedel" translatesAutoresizingMaskIntoConstraints="NO" id="vPj-yw-dDM">
+                                <rect key="frame" x="16" y="101" width="288" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vPj-yw-dDM" secondAttribute="height" multiplier="101:74" constant="66.891891891891873" id="uKK-dv-r0K"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vill du veta vad du äter?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1L-Ba-f6X">
-                                <rect key="frame" x="77" y="72" width="192" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vill du veta vad du äter?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1L-Ba-f6X">
+                                <rect key="frame" x="65" y="72" width="190" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="VUq-wB-X7c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSE-3Q-SE5">
-                                <rect key="frame" x="17" y="295" width="287" height="125"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Du kan också lägga till livsmedel med bild till en favoritlista och även jämföra näringsinnehåll för två livsmedel åt gången." translatesAutoresizingMaskIntoConstraints="NO" id="GyF-0w-KMv">
+                                <rect key="frame" x="16" y="349" width="288" height="74"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">I så fall är den här appen din räddning! Mata in namnet på ett livsmedel och får veta dess näringsinnehål.  Du kan också lägga till livsmedel med bild till en favoritlista och även jämföra näringsinnehåll för två livsmedel åt gången.</string>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="0hS-YD-Uha"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSE-3Q-SE5">
+                                <rect key="frame" x="16" y="271" width="288" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="rbq-Xs-UuK"/>
+                                </constraints>
+                                <string key="text">I så fall är den här appen din räddning! Mata in namnet på ett livsmedel och får veta dess näringsinnehål.  Närningsvärdena är angivet i enhet per 100g. </string>
+                                <color key="textColor" red="0.0" green="0.20000000000000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Y1L-Ba-f6X" secondAttribute="centerX" id="9Fx-pO-v8G"/>
+                            <constraint firstItem="GyF-0w-KMv" firstAttribute="top" secondItem="vSE-3Q-SE5" secondAttribute="bottom" constant="8" symbolic="YES" id="D9P-aH-6Ph"/>
+                            <constraint firstItem="Y1L-Ba-f6X" firstAttribute="top" secondItem="2TU-WP-p6j" secondAttribute="bottom" constant="8" symbolic="YES" id="DMJ-qU-5Ar"/>
+                            <constraint firstItem="GyF-0w-KMv" firstAttribute="top" secondItem="vSE-3Q-SE5" secondAttribute="bottom" constant="8" symbolic="YES" id="F5w-Po-t2q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vPj-yw-dDM" secondAttribute="trailing" id="HbC-q6-JWL"/>
+                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="top" secondItem="vPj-yw-dDM" secondAttribute="bottom" constant="8" symbolic="YES" id="Kzo-eQ-Mqd"/>
+                            <constraint firstItem="hMA-mm-J3T" firstAttribute="top" secondItem="GyF-0w-KMv" secondAttribute="bottom" constant="8" symbolic="YES" id="Mjv-mU-plz"/>
+                            <constraint firstItem="vPj-yw-dDM" firstAttribute="top" secondItem="Y1L-Ba-f6X" secondAttribute="bottom" constant="8" symbolic="YES" id="OMT-4v-af5"/>
+                            <constraint firstItem="GyF-0w-KMv" firstAttribute="leading" secondItem="vSE-3Q-SE5" secondAttribute="leading" id="Q2O-1K-saP"/>
+                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="leading" secondItem="jk7-Ej-VW7" secondAttribute="leadingMargin" id="mLq-qD-vvs"/>
+                            <constraint firstItem="vPj-yw-dDM" firstAttribute="leading" secondItem="jk7-Ej-VW7" secondAttribute="leadingMargin" id="nrR-Mo-U0H"/>
+                            <constraint firstItem="GyF-0w-KMv" firstAttribute="top" secondItem="vSE-3Q-SE5" secondAttribute="bottom" constant="8" symbolic="YES" id="oCH-vJ-QRP"/>
+                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="width" secondItem="GyF-0w-KMv" secondAttribute="width" id="wTr-DP-SHt"/>
+                            <constraint firstItem="vSE-3Q-SE5" firstAttribute="trailing" secondItem="jk7-Ej-VW7" secondAttribute="trailingMargin" id="zHo-0O-wvs"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="MUR-B9-iNv"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
