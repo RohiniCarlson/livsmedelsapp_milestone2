@@ -12,7 +12,7 @@
 #import "FavoritesInfo.h"
 
 @interface FavoritesTableViewController ()
-@property (nonatomic) NSArray *favoriteListArray;
+@property (nonatomic) NSMutableArray *favoriteListArray;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *compareButton;
 
@@ -23,7 +23,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSMutableDictionary *favoriteList = delegate.favoriteList;
-    self.favoriteListArray = [favoriteList allValues];
+   // NSArray *items = [favoriteList allValues];
+    self.favoriteListArray = [NSMutableArray arrayWithArray:[favoriteList allValues]];
     NSLog(@"num items in array: %lu",(unsigned long)self.favoriteListArray.count);
     for (FoodItem *item in self.favoriteListArray) {
         NSLog(@"%@", item );
@@ -78,6 +79,20 @@
     return completePath;
 }
 
+-(void) deleteImageFromCache:(NSString*)imageToBeDeleted{
+    if (imageToBeDeleted != nil) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSError *error;
+        if(![fileManager removeItemAtPath:imageToBeDeleted error:&error]) {
+            NSLog(@"Could not delete associated image: %@ ",[error localizedDescription]);
+        } else {
+            NSLog(@"image deleted successfully!");
+        }
+    } else {
+        NSLog(@"No image exists!");
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:
     (NSIndexPath *)indexPath {
     FoodItem *foodItem = (FoodItem*)self.favoriteListArray[indexPath.row];
@@ -98,42 +113,24 @@
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    FoodItem *foodItem = (FoodItem*)self.favoriteListArray[indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+        // Delete associated image
+        [self deleteImageFromCache:foodItem.imagePath];
+        // Delete row from the data source
+        [self.favoriteListArray removeObjectAtIndex:indexPath.row];
+        // Delete row from NSUserDefaults
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        [delegate.favoriteList removeObjectForKey:foodItem.number];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
- // [[[NSFileManager] defaultFileManager] removeItemAtPath:pathNmae error:nil];
-}
-*/
-
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
