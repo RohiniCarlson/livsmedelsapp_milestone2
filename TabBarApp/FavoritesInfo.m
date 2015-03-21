@@ -65,6 +65,8 @@
 - (IBAction)takePhoto:(UIBarButtonItem *)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.delegate = self;
+    // To get rid off rendering error
+    imagePicker.modalPresentationStyle = UIModalPresentationCurrentContext;
     imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
